@@ -4,6 +4,7 @@ require('babel-polyfill');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const globImporter = require('node-sass-glob-importer')
 
 module.exports = {
   // Where webpack looks to start building the bundle
@@ -22,29 +23,29 @@ module.exports = {
     new CleanWebpackPlugin(),
 
     // Copies files from target to destination folder
-    new CopyWebpackPlugin({
-      patterns: [
-        {
-          from: paths.public,
-          to: 'public',
-          globOptions: {
-            ignore: ['*.DS_Store'],
-          },
-          noErrorOnMissing: true,
-        },
-        {
-          from: path.resolve(__dirname, '../src/js/components/virtual-keyboard/source'),
-          to: 'source',
-        },
-      ],
-    }),
+    // new CopyWebpackPlugin({
+    //   patterns: [
+    //     {
+    //       from: paths.public,
+    //       to: 'public',
+    //       // globOptions: {
+    //       //   ignore: ['*.DS_Store'],
+    //       // },
+    //       noErrorOnMissing: true,
+    //     },
+    //     {
+    //       from: path.resolve(__dirname, '../src/js/components/virtual-keyboard/source'),
+    //       to: 'source',
+    //     },
+    //   ],
+    // }),
 
     // Generates an HTML file from a template
     // Generates deprecation warning: https://github.com/jantimon/html-webpack-plugin/issues/1501
     new HtmlWebpackPlugin({
-      title: 'Covid19',
+      title: 'АнтиМусор',
       favicon: paths.src + '/images/favicon.ico',
-      template: paths.src + '/template.html', // template file
+      template: paths.src + '/index.html', // template file
       filename: 'index.html', // output file
     }),
   ],
@@ -61,8 +62,10 @@ module.exports = {
         use: [
           'style-loader',
           { loader: 'css-loader', options: { sourceMap: true, importLoaders: 1 } },
-          { loader: 'postcss-loader', options: { sourceMap: true } },
-          { loader: 'sass-loader', options: { sourceMap: true } },
+          // { loader: 'postcss-loader', options: { sourceMap: true } },
+          { loader: 'sass-loader', options: { sourceMap: true, sassOptions: {
+            importer: globImporter()
+          } } },
         ],
       },
 

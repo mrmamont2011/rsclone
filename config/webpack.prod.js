@@ -4,6 +4,7 @@ const common = require('./webpack.common.js')
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
+const globImporter = require('node-sass-glob-importer')
 
 module.exports = merge(common, {
   mode: 'production',
@@ -34,8 +35,14 @@ module.exports = merge(common, {
               sourceMap: false,
             },
           },
-          'postcss-loader',
-          'sass-loader',
+          {
+            loader: "sass-loader",
+            options: {
+              sassOptions: {
+                importer: globImporter()
+              }
+            }
+          },
         ],
       },
     ],

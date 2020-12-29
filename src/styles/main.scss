@@ -1,0 +1,13 @@
+@import "normalize.css";
+
+h1 {
+  font-size: 30px;
+  background-color: blue;
+  color: green;
+}
+
+@import './layout/variables.scss';
+@import './layout/media.scss';
+@import './layout/base.scss';
+
+@import './blocks/*.scss';
