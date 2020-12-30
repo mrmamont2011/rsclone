@@ -1,13 +1,65 @@
 @import "normalize.css";
-
-h1 {
-  font-size: 30px;
-  background-color: blue;
-  color: green;
-}
-
+@import './layout/base.scss';
 @import './layout/variables.scss';
 @import './layout/media.scss';
-@import './layout/base.scss';
-
 @import './blocks/*.scss';
+
+
+body {
+  min-width: 1024px;
+  background-color: black;
+  color: white;
+ 
+}
+
+h1 {
+  font-size: 2em;
+  color: white;
+}
+
+header {
+  height: 5%;
+  background-color: rgb(39, 39, 39);
+}
+
+.wrap {
+  height: 90%;
+  display:  flex;
+}
+
+.filter {
+  width: 320px;
+  background-color:grey;
+}
+
+.right_panel {
+  flex-grow: 1;
+  background-color:grey;
+}
+.map {
+  width: calc(100vw - 320px);
+  height: 100%;
+  background-color: rgb(82, 79, 79);
+}
+.list {
+  width: calc(100vw - 320px);
+  height: 100%;
+  background-color: rgb(82, 79, 79);
+}
+
+
+.hidden {
+  display: none;
+}
+
+footer {
+  height: 5%;
+  background-color:rgb(39, 39, 39);
+}
+
+
+
+
+
+
+
