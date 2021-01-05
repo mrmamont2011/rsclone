@@ -26,3 +26,5 @@ export const data = [
     _id: '5fea0231233123444841403a', chatId: '123434452', date: 'Mon Dec 30 2020 09:11:55 GMT+0300 (Moscow Standard Time)', type: 'trachType', problem: 'problem7', period: 'Mon Dec 28 2020 19:48:55 GMT+0300 (Moscow Standard Time)', comment: 'горит', status: 'red', geo: '[56.28176729820236,44.03699586001902]', images: ['./images/008.jpg'], movies: ['/data/videos/2020-12-28_16-48-59_0001_001.mp4'], result: 'pending', nameAdmin: 'defaultAdmin',
   },
 ];
+
+export const tableHeaders = ['№', 'Дата и время', 'Тип проблемы', 'Проблема', 'Статус', 'Комментарий', 'Фото', 'Видео', 'Результат', 'Админ'];

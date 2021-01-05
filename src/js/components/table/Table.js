@@ -1,4 +1,5 @@
 // import { data } from '../constants/constants';
+import { tableHeaders } from '../constants/constants';
 
 export default class Table {
   constructor () {
@@ -10,8 +11,6 @@ export default class Table {
 
     const tableRow = document.createElement('tr');
     tableRow.classList.add('table__header');
-
-    const tableHeaders = ['№', 'Дата и время', 'Тип проблемы', 'Проблема', 'Статус', 'Комментарий', 'Фото', 'Видео', 'Результат', 'Админ'];
 
     tableHeaders.forEach((item) => {
       const tableHeader = document.createElement('th');
