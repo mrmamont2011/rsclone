@@ -11,3 +11,8 @@
     background-color: var(--light);
   }
 }
+
+.table__row-cell,
+.table__header-cell {
+  user-select: none;
+}
