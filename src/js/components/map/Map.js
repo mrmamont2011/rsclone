@@ -24,12 +24,12 @@ export default class Map {
 
   init(data) {
     this.data = data;
-
     this.initMap();
   }
 
-  updateData(data) {
+  set updateData(data) {
     this.data = data;
+    this.init(this.data);
   }
 
   createYMaps() {
