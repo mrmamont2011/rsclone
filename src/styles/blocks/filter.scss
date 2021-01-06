@@ -1,4 +1,4 @@
-.filter__level-select {
+.filter {
   width: 320px;
 
   .select-hidden {
@@ -77,18 +77,6 @@
         margin: 0 18px;
       }
 
-      .filter-circle_2 {
-        background-color: $done-option-color;
-      }
-
-      .filter-circle_3 {
-        background-color: $inwork-option-color;
-      }
-
-      .filter-circle_4 {
-        background-color: $received-option-color;
-      }
-
       margin: 0;
       padding: 10px 0;
       text-indent: 20px;
@@ -104,5 +92,23 @@
       }
     }
   }
-
 }
+
+.filter__level-select {
+  .select-options {
+    li {
+      .filter-circle_2 {
+        background-color: $done-option-color;
+      }
+  
+      .filter-circle_3 {
+        background-color: $inwork-option-color;
+      }
+  
+      .filter-circle_4 {
+        background-color: $received-option-color;
+      }
+    }
+  }
+}
+

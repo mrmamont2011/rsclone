@@ -1,8 +1,7 @@
 import './styles/main.scss';
-import $ from 'jquery';
 import Map from './js/components/map/Map';
 import { data } from './js/components/constants';
-import renderLevelFilter from './js/components/filter/levelRender';
+import renderFilter from './js/components/filter/filterRender';
 import getByLevel from './js/components/filter/levelFilter';
 
 const map = new Map();
@@ -10,17 +9,17 @@ const map = new Map();
 const main = async () => {
   try {
     map.init(data);
-    renderLevelFilter();
+    renderFilter('.filter__level-select');
 
     // level filter event
-    $('.filter__level-select .select-options li').on('click', (e) => {
-      if (e.target && e.target.nodeName === 'LI') {
+    document.querySelector('.filter__level-select .select').addEventListener('click', (e) => {
+      if (e.target && e.target.matches('li')) {
         const rel = e.target.getAttribute('rel');
         const newData = getByLevel(rel, data);
-        $('#map').empty();
+        document.getElementById('map').innerHTML = '';
         map.updateData = newData;
       }
-    });
+    }, false);
   } catch (err) {
     // eslint-disable-next-line no-alert
     alert(err);
