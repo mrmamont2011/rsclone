@@ -2,59 +2,68 @@
 import { tableHeaders } from '../constants/constants';
 
 export default class Table {
-  constructor () {
+  constructor() {
     this.data = null;
   }
 
   renderTable() {
     const tableDom = document.querySelector('#table');
 
-    const tableRow = document.createElement('tr');
-    tableRow.classList.add('table__header');
+    const tableHeaderRow = document.createElement('tr');
+    tableHeaderRow.classList.add('table__header');
 
     tableHeaders.forEach((item) => {
       const tableHeader = document.createElement('th');
       tableHeader.classList.add('table__header-cell');
       tableHeader.textContent = `${item}`;
 
-      tableRow.append(tableHeader);
-    })
+      tableHeaderRow.append(tableHeader);
+    });
 
-    tableDom.append(tableRow);
+    tableDom.append(tableHeaderRow);
 
     this.data.forEach(({
-      chatId, date, type, problem, status, comment, images, movies, result, nameAdmin
+      chatId, date, type, problem, status, comment, images, movies, result, nameAdmin,
     }) => {
-
       const tableRow = document.createElement('tr');
       tableRow.classList.add('table__row');
 
       const cellsInRow = [
-        this.createCell('chatId', chatId),
-        this.createCell('date', date),
-        this.createCell('type', type),
-        this.createCell('problem', problem),
-        this.createCell('status', status),
-        this.createCell('comment', comment),
-        this.createCell('images', images),
-        this.createCell('movies', movies),
-        this.createCell('result', result),
-        this.createCell('nameAdmin', nameAdmin)
+        Table.createCell('chatId', chatId),
+        Table.createCell('date', date),
+        Table.createCell('type', type),
+        Table.createCell('problem', problem),
+        Table.createCell('status', status),
+        Table.createCell('comment', comment),
+        Table.createCell('images', images),
+        Table.createCell('movies', movies),
+        Table.createCell('result', result),
+        Table.createCell('nameAdmin', nameAdmin),
       ];
 
-      cellsInRow.forEach((cell) =>{
+      cellsInRow.forEach((cell) => {
         tableRow.append(cell);
-      })
+      });
 
       tableDom.append(tableRow);
-    })
+    });
   }
 
-  createCell(type, value) {
+  static createCell(type, value) {
     const tableCell = document.createElement('td');
     tableCell.classList.add('table__row-cell');
 
-    switch(type) {
+    function createImgThumb() {
+      const image = document.createElement('img');
+      image.classList.add('table__row-thumb');
+      image.setAttribute('src', '');
+      return image;
+    }
+
+    const problemDate = new Date(value);
+    const imgThumb = createImgThumb();
+
+    switch (type) {
       case 'chatId':
       case 'type':
       case 'problem':
@@ -66,34 +75,33 @@ export default class Table {
         break;
 
       case 'date':
-        const problemDate = new Date(value);
-        const problemDay = problemDate.getDate();
-        const problemMonth = problemDate.getMonth();
-        const problemYear = problemDate.getFullYear();
-        const problemHour = problemDate.getHours();
-        const problemMin = problemDate.getMinutes();
-
-        function addZero(n) {
-          return (parseInt(n, 10) < 10 ? '0' : '') + n;
-        }
-
-        tableCell.textContent = 
-        `${problemDay}.${problemMonth + 1}.${problemYear} ${addZero(problemHour)}:${addZero(problemMin)}`;
+        tableCell.textContent = Table.getFormattedDate(problemDate);
         break;
 
       case 'images':
-        const image = document.createElement('img');
-        image.classList.add('table__row-photo');
-        image.setAttribute('src', ``);
-        tableCell.append(image);
+        tableCell.append(imgThumb);
         break;
 
-      case 'movies':
-      
+      default:
+        tableCell.textContent = `${value}`;
         break;
     }
 
     return tableCell;
+  }
+
+  static getFormattedDate(date) {
+    function addZero(n) {
+      return (parseInt(n, 10) < 10 ? '0' : '') + n;
+    }
+
+    const dateDay = date.getDate();
+    const dateMonth = date.getMonth() + 1;
+    const dateYear = date.getFullYear();
+    const dateHour = date.getHours();
+    const dateMin = date.getMinutes();
+
+    return `${dateDay}.${dateMonth}.${dateYear} ${addZero(dateHour)}:${addZero(dateMin)}`;
   }
 
   init(data) {
