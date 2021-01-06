@@ -1,5 +1,5 @@
 // import { data } from '../constants/constants';
-import { tableHeaders } from '../constants/constants';
+import { tableHeaders } from '../constants';
 
 export default class Table {
   constructor() {

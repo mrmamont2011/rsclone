@@ -1,9 +1,8 @@
 @import 'normalize.css';
 
 @import './layout/bootstrap_minty.css';
-@import './layout/variables.scss';
+@import './abstract/*.scss';
 @import './layout/base.scss';
 @import './layout/media.scss';
 
 @import './blocks/*.scss';
-

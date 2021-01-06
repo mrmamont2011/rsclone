@@ -27,4 +27,12 @@ export const data = [
   },
 ];
 
+export const filters = {
+  status: {
+    done: 'green',
+    inwork: 'yellow',
+    received: 'red',
+  },
+};
+
 export const tableHeaders = ['№', 'Дата и время', 'Тип проблемы', 'Проблема', 'Статус', 'Комментарий', 'Фото', 'Видео', 'Результат', 'Админ'];
