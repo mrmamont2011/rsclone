@@ -42,7 +42,7 @@ export default function initRenderFilter(selectWrap) {
 
     const selecStyled = mainWrap.querySelector('.select-styled');
 
-    mainWrap.querySelector('.select-styled').addEventListener('click', (e) => {
+    selecStyled.addEventListener('click', (e) => {
       e.stopPropagation();
       if (selecStyled.classList.contains('active')) {
         selecStyled.classList.remove('active');
