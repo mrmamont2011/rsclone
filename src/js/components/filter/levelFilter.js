@@ -7,21 +7,28 @@ import { filters } from '../constants';
  * @return object
  */
 
-export default function getByLevel(rel, filteredData = {}) {
-  let levelData;
+export default function getByLevel(rel, filteredData = []) {
   switch (rel) {
-    case 'green':
-      levelData = filteredData.filter((el) => el.status === filters.status.done);
-      break;
-    case 'yellow':
-      levelData = filteredData.filter((el) => el.status === filters.status.inwork);
-      break;
-    case 'red':
-      levelData = filteredData.filter((el) => el.status === filters.status.received);
-      break;
+    case 'done':
+      return {
+        levelData: filteredData.filter((el) => el.status === filters.status.done),
+        color: 'green',
+      };
+    case 'pending':
+      return {
+        levelData: filteredData.filter((el) => el.status === filters.status.inwork),
+        color: 'yellow',
+      };
+    case 'new':
+      return {
+        levelData: filteredData.filter((el) => el.status === filters.status.new),
+        color: 'red',
+      };
+
     default:
-      levelData = filteredData;
-      break;
+      return {
+        levelData: filteredData,
+        color: 'black',
+      };
   }
-  return levelData;
 }

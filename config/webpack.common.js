@@ -20,8 +20,6 @@ module.exports = {
   // Customize the webpack build process
   plugins: [
     // Removes/cleans build folders and unused assets when rebuilding
-    new CleanWebpackPlugin(),
-
     // Copies files from target to destination folder
     // new CopyWebpackPlugin({
     //   patterns: [
@@ -39,6 +37,15 @@ module.exports = {
     //     },
     //   ],
     // }),
+
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, '../src/images'),
+          to: path.resolve(__dirname, '../dist/images'),
+        },
+      ],
+    }),
 
     // Generates an HTML file from a template
     // Generates deprecation warning: https://github.com/jantimon/html-webpack-plugin/issues/1501

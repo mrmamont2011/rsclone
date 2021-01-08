@@ -18,9 +18,10 @@ const main = async () => {
     document.querySelector('.filter__level-select .select').addEventListener('click', (e) => {
       if (e.target && e.target.matches('li')) {
         const rel = e.target.getAttribute('rel');
-        const newData = getByLevel(rel, data);
+        const filteredData = getByLevel(rel, data);
+        console.log(filteredData);
         document.getElementById('map').innerHTML = '';
-        map.updateData = newData;
+        map.updateData = filteredData.levelData || [];
       }
     }, false);
   } catch (err) {
