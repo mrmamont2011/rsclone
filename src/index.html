@@ -18,13 +18,24 @@
       </header>
       <main class="page" id="wrap">
         <div class="filter" id="filter">         
-          <div class="filter__level-select">
+          <div data-filterAction="status" class="filter__level-select">
             <select>
-              <option value="hide">Фильтр по статусу</option>
-              <option value="all">Фильтр по статусу</option>
+              <option value="hide">По статусу</option>
+              <option value="all">По статусу</option>
               <option value="done">Сделано</option>
               <option value="pending">В работе</option>
               <option value="new">Получено</option>
+            </select>
+          </div>
+
+          <div data-filterAction="type" class="filter__type-select">
+            <select>
+              <option value="hide">По типу</option>
+              <option value="all">По типу</option>
+              <option value="незаконная свалка">Незаконная свалка</option>
+              <option value="мусорный контейнер">Мусорный контейнер</option>
+              <option value="автотранспорт">Автотранспорт</option>
+              <option value="деревья">Деревья</option>
             </select>
           </div>
         </div>

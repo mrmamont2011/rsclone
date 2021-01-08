@@ -1,6 +1,6 @@
 /* eslint import/no-cycle: [0] */
 import ymaps from 'ymaps';
-import getByLevel from '../filter/levelFilter';
+import getByLevel from '../filter/filter';
 
 export default class Map {
   constructor() {
@@ -29,7 +29,6 @@ export default class Map {
     });
   }
 
-  // TODO: Status color logic
   async initYandexMap() {
     this.createYMaps();
 

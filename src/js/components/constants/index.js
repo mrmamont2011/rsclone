@@ -1,5 +1,3 @@
-export const URL_STATISTICS = 'https://api.covid19api.com/summary';
-export const URL_POPULATIONS = 'https://restcountries.eu/rest/v2/all?fields=population;alpha2Code';
 export const data = [
   {
     _id: '5fea0554b20baa05a841403a',
@@ -115,11 +113,24 @@ export const data = [
   },
 ];
 
+export const statusColors = {
+  green: 'green',
+  red: 'red',
+  yellow: 'yellow',
+  black: 'black',
+};
+
 export const filters = {
   status: {
     done: 'done',
     inwork: 'pending',
     new: 'new',
+  },
+  type: {
+    garbage: 'незаконная свалка',
+    container: 'мусорный контейнер',
+    auto: 'автотранспорт',
+    tree: 'деревья',
   },
 };
 

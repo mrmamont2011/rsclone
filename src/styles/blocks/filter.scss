@@ -98,11 +98,14 @@
     }
   }
 
-  &__level-select {
+  &__level-select,
+  &__type-select {
     box-shadow: $shadow-filter;
     margin-top: 30px;
     background-color: $select-background;
+  }
 
+  &__level-select {
     .select-options {
       li {
         .filter-circle_2 {
