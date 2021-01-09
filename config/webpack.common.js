@@ -23,22 +23,15 @@ module.exports = {
     new CleanWebpackPlugin(),
 
     // Copies files from target to destination folder
-    // new CopyWebpackPlugin({
-    //   patterns: [
-    //     {
-    //       from: paths.public,
-    //       to: 'public',
-    //       // globOptions: {
-    //       //   ignore: ['*.DS_Store'],
-    //       // },
-    //       noErrorOnMissing: true,
-    //     },
-    //     {
-    //       from: path.resolve(__dirname, '../src/js/components/virtual-keyboard/source'),
-    //       to: 'source',
-    //     },
-    //   ],
-    // }),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, '../src/images'),
+          to:  path.resolve(__dirname, '../dist/images'),
+          noErrorOnMissing: true,
+        },
+      ],
+    }),
 
     // Generates an HTML file from a template
     // Generates deprecation warning: https://github.com/jantimon/html-webpack-plugin/issues/1501
@@ -70,7 +63,9 @@ module.exports = {
       },
 
       // Images: Copy image files to build folder
-      { test: /\.(?:ico|gif|png|jpg|jpeg|svg)$/i, type: 'asset/resource' },
+      // { test: /\.(png|jpe?g|svg|gif|ico|webp)$/,
+      //   use: ['file-loader'] },
+      { test: /\.(?:ico|gif|png|jpg|jpeg|svg|webp)$/i, type: 'asset/resource' },
 
       // Fonts and SVGs: Inline files
       { test: /\.(woff(2)?|eot|ttf|otf|svg|)$/, type: 'asset/inline' },

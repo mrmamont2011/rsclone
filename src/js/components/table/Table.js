@@ -1,4 +1,5 @@
 // import { data } from '../constants/constants';
+import { doc } from 'prettier';
 import { tableHeaders } from '../constants';
 
 export default class Table {
@@ -23,7 +24,7 @@ export default class Table {
     tableDom.append(tableHeaderRow);
 
     this.data.forEach(({
-      chatId, date, type, problem, status, comment, images, movies, result, nameAdmin,
+      chatId, date, type, problem, comment, status, images, movies, nameAdmin,
     }) => {
       const tableRow = document.createElement('tr');
       tableRow.classList.add('table__row');
@@ -33,11 +34,10 @@ export default class Table {
         Table.createCell('date', date),
         Table.createCell('type', type),
         Table.createCell('problem', problem),
-        Table.createCell('status', status),
         Table.createCell('comment', comment),
         Table.createCell('images', images),
         Table.createCell('movies', movies),
-        Table.createCell('result', result),
+        Table.createCell('status', status),
         Table.createCell('nameAdmin', nameAdmin),
       ];
 
@@ -53,15 +53,22 @@ export default class Table {
     const tableCell = document.createElement('td');
     tableCell.classList.add('table__row-cell');
 
-    function createImgThumb() {
+    function createImgThumb(source) {
       const image = document.createElement('img');
       image.classList.add('table__row-thumb');
-      image.setAttribute('src', '');
+      image.setAttribute('src', `${source}`);
       return image;
     }
 
+    function createIcon() {
+      const icon = document.createElement('div');
+      icon.classList.add('table__row-icon');
+      return icon;
+    }
+
     const problemDate = new Date(value);
-    const imgThumb = createImgThumb();
+    let imgThumb = null;
+    let videoIcon = null;
 
     switch (type) {
       case 'chatId':
@@ -69,7 +76,6 @@ export default class Table {
       case 'problem':
       case 'status':
       case 'comment':
-      case 'result':
       case 'nameAdmin':
         tableCell.textContent = `${value}`;
         break;
@@ -79,7 +85,13 @@ export default class Table {
         break;
 
       case 'images':
+        imgThumb = createImgThumb(value);
         tableCell.append(imgThumb);
+        break;
+
+      case 'movies':
+        videoIcon = createIcon();
+        tableCell.append(videoIcon);
         break;
 
       default:

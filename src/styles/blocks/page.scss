@@ -7,6 +7,7 @@
 
 .page__right {
   flex-grow: 1;
+  width: calc(100vw - 320px);
   background-color:grey;
   display: flex;
   align-items: stretch;
@@ -14,6 +15,7 @@
 }
 
 .page__right-table {
-  width: calc(100vw - 320px);
+  width: 100%;
+  padding-right: 1%;
   background-color: var(--white);
 }
