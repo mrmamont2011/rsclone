@@ -1,5 +1,3 @@
-// import { data } from '../constants/constants';
-import { doc } from 'prettier';
 import { tableHeaders } from '../constants';
 
 export default class Table {

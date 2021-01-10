@@ -1,0 +1,17 @@
+.close-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  transition: .3s;
+
+  &__icon {
+    width: 20px;
+    height: 20px;
+    fill: var(--gray-dark);
+  }
+
+  &:hover {
+    cursor: pointer;
+    opacity: .7;
+  }
+}

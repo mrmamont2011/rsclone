@@ -1,0 +1,22 @@
+.popup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  z-index: 15;
+
+  padding: 40px 40px 15px 15px;
+
+  background-color: var(--light);
+  border-radius: 5px;
+}
+
+.popup__content {
+  display: flex;
+}
+
+.popup__photo {
+  flex-shrink: 0;
+  width: 500px;
+}
