@@ -19,7 +19,10 @@ module.exports = {
 
   // Customize the webpack build process
   plugins: [
+    
     // Removes/cleans build folders and unused assets when rebuilding
+    new CleanWebpackPlugin(),
+    
     // Copies files from target to destination folder
     new CopyWebpackPlugin({
       patterns: [
@@ -27,15 +30,6 @@ module.exports = {
           from: path.resolve(__dirname, '../src/images'),
           to:  path.resolve(__dirname, '../dist/images'),
           noErrorOnMissing: true,
-        },
-      ],
-    }),
-
-    new CopyWebpackPlugin({
-      patterns: [
-        {
-          from: path.resolve(__dirname, '../src/images'),
-          to: path.resolve(__dirname, '../dist/images'),
         },
       ],
     }),
