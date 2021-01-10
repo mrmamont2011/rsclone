@@ -1,7 +1,7 @@
 import './styles/main.scss';
 import Map from './js/components/map/Map';
 import Table from './js/components/table/Table';
-import { data } from './constants';
+import { data } from './js/constants';
 import renderFilter from './js/components/filter/filterRender';
 import getByFilter from './js/components/filter/filter';
 

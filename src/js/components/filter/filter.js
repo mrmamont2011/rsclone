@@ -1,4 +1,4 @@
-import { filters, statusColors } from '../../../constants';
+import { filters, statusColors } from '../../constants';
 
 /**
  * return filtered data object

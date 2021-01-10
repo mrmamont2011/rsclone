@@ -1,6 +1,6 @@
 // import { data } from '../constants/constants';
 import { doc } from 'prettier';
-import { tableHeaders } from '../../../constants';
+import { tableHeaders } from '../../constants';
 
 export default class Table {
   constructor() {
