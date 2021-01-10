@@ -1,6 +1,6 @@
 // import { data } from '../constants/constants';
 import { doc } from 'prettier';
-import { tableHeaders } from '../constants';
+import { tableHeaders } from '../../constants';
 
 export default class Table {
   constructor() {
@@ -24,7 +24,7 @@ export default class Table {
     tableDom.append(tableHeaderRow);
 
     this.data.forEach(({
-      chatId, date, type, problem, comment, status, images, movies, nameAdmin,
+      chatId, date, type, problem, userComment, status, image, movies, admin,
     }) => {
       const tableRow = document.createElement('tr');
       tableRow.classList.add('table__row');
@@ -34,11 +34,11 @@ export default class Table {
         Table.createCell('date', date),
         Table.createCell('type', type),
         Table.createCell('problem', problem),
-        Table.createCell('comment', comment),
-        Table.createCell('images', images),
+        Table.createCell('userComment', userComment),
+        Table.createCell('images', image),
         Table.createCell('movies', movies),
         Table.createCell('status', status),
-        Table.createCell('nameAdmin', nameAdmin),
+        Table.createCell('admin', admin),
       ];
 
       cellsInRow.forEach((cell) => {
