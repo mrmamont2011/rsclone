@@ -2,6 +2,11 @@ html, body {
   height: 100%;
 }
 
+html::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
 body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
@@ -27,8 +32,6 @@ body {
   display: flex;
   flex-direction: column;
 }
-
-
 
 .cont {
   margin: 0 auto;
