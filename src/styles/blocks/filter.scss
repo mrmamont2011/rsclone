@@ -1,5 +1,8 @@
 .filter {
   width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   .select-hidden {
     display: none;
@@ -81,7 +84,9 @@
       padding: 10px 0;
       text-indent: 20px;
       border-top: 1px solid darken($select-background, 10);
-      transition: all, .2s, ease-in-out;
+      transition: all,
+      .2s,
+      ease-in-out;
 
       &:hover {
         background: $mid-gray;
@@ -92,23 +97,29 @@
       }
     }
   }
-}
 
-.filter__level-select {
-  .select-options {
-    li {
-      .filter-circle_2 {
-        background-color: $done-option-color;
-      }
-  
-      .filter-circle_3 {
-        background-color: $inwork-option-color;
-      }
-  
-      .filter-circle_4 {
-        background-color: $received-option-color;
+  &__level-select,
+  &__type-select {
+    box-shadow: $shadow-filter;
+    margin-top: 30px;
+    background-color: $select-background;
+  }
+
+  &__level-select {
+    .select-options {
+      li {
+        .filter-circle_2 {
+          background-color: $done-option-color;
+        }
+
+        .filter-circle_3 {
+          background-color: $inwork-option-color;
+        }
+
+        .filter-circle_4 {
+          background-color: $received-option-color;
+        }
       }
     }
   }
 }
-
