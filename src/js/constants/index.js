@@ -5,7 +5,7 @@ export const data = [
     problem: 'бытовой мусор',
     date: 'Mon Dec 28 2020 19:48:55 GMT+0300 (Moscow Standard Time)',
     location: "{'latitude': '56.24309266089005', 'longitude': '43.96825220147877'}",
-    image: ['./images/002.jpg'],
+    image: ['./images/001.jpg'],
     userComment: 'сильно пахнет',
     video: ['/data/videos/2020-12-28_16-48-59_0001_001.mp4'],
     chatId: '122013352',

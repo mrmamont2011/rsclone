@@ -1,4 +1,7 @@
 import { tableHeaders } from '../../constants';
+import Popup from '../popup/Popup';
+
+const popup = new Popup();
 
 export default class Table {
   constructor() {
@@ -84,6 +87,9 @@ export default class Table {
 
       case 'images':
         imgThumb = createImgThumb(value);
+        imgThumb.addEventListener('click', () => {
+          popup.openPopup(value);
+        })
         tableCell.append(imgThumb);
         break;
 

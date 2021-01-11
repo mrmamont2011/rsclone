@@ -3,13 +3,17 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  display: flex;
   z-index: 15;
-
-  padding: 40px 40px 15px 15px;
-
+  
+  padding: 40px;
+  
   background-color: var(--light);
   border-radius: 5px;
+  display: none;
+
+  &--visible {
+    display: block;
+  }
 }
 
 .popup__content {
@@ -18,5 +22,5 @@
 
 .popup__photo {
   flex-shrink: 0;
-  width: 500px;
+  width: 40vw;
 }
