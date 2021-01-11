@@ -92,7 +92,7 @@ export default class Table {
         videoIcon.addEventListener('click', () => {
           console.log(value);
           popup.openPopup(value, 'video');
-        })
+        });
         tableCell.append(videoIcon);
         break;
 

@@ -21,7 +21,7 @@ export default class Popup {
       videoDom.setAttribute('controls', 'controls');
       this.popupContent.append(videoDom);
     }
-    
+
     this.popupDom.classList.add('popup--visible');
     document.body.classList.add('no-scroll');
 
