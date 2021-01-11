@@ -1,15 +1,27 @@
+import createDomElem from '../../helpers/domHelpers';
+
 const overlay = document.querySelector('#overlay');
 
 export default class Popup {
   constructor() {
     this.popupDom = document.querySelector('#popup');
-    this.popupImg = document.querySelector('#popup-photo');
+    this.popupContent = document.querySelector('#popup-content');
     this.closePopupBtn = document.querySelector('#button_close__popup');
   }
 
-  openPopup(source) {
+  openPopup(source, tag) {
     overlay.classList.add('overlay--visible');
-    this.popupImg.setAttribute('src', `${source}`);
+
+    this.popupContent.innerHTML = '';
+
+    if (tag === 'image') {
+      this.popupContent.append(createDomElem('img', 'popup__photo', source));
+    } else if (tag === 'video') {
+      const videoDom = createDomElem('video', 'video', source);
+      videoDom.setAttribute('controls', 'controls');
+      this.popupContent.append(videoDom);
+    }
+    
     this.popupDom.classList.add('popup--visible');
     document.body.classList.add('no-scroll');
 
@@ -23,10 +35,10 @@ export default class Popup {
 
     overlay.addEventListener('click', () => {
       this.closePopupBtn.click();
-    })
+    });
 
     document.addEventListener('keydown', (e) => {
-      if (e.key === "Escape") {
+      if (e.key === 'Escape') {
         this.closePopupBtn.click();
       }
     });

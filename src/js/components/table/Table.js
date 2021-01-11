@@ -1,3 +1,4 @@
+import createDomElem from '../../helpers/domHelpers';
 import { tableHeaders } from '../../constants';
 import Popup from '../popup/Popup';
 
@@ -25,7 +26,7 @@ export default class Table {
     tableDom.append(tableHeaderRow);
 
     this.data.forEach(({
-      chatId, date, type, problem, userComment, status, image, movies, admin,
+      chatId, date, type, problem, userComment, status, image, video, admin,
     }) => {
       const tableRow = document.createElement('tr');
       tableRow.classList.add('table__row');
@@ -37,7 +38,7 @@ export default class Table {
         Table.createCell('problem', problem),
         Table.createCell('userComment', userComment),
         Table.createCell('images', image),
-        Table.createCell('movies', movies),
+        Table.createCell('video', video),
         Table.createCell('status', status),
         Table.createCell('admin', admin),
       ];
@@ -53,13 +54,6 @@ export default class Table {
   static createCell(type, value) {
     const tableCell = document.createElement('td');
     tableCell.classList.add('table__row-cell');
-
-    function createImgThumb(source) {
-      const image = document.createElement('img');
-      image.classList.add('table__row-thumb');
-      image.setAttribute('src', `${source}`);
-      return image;
-    }
 
     function createIcon() {
       const icon = document.createElement('div');
@@ -86,15 +80,19 @@ export default class Table {
         break;
 
       case 'images':
-        imgThumb = createImgThumb(value);
+        imgThumb = createDomElem('img', 'table__row-thumb', value);
         imgThumb.addEventListener('click', () => {
-          popup.openPopup(value);
-        })
+          popup.openPopup(value, 'image');
+        });
         tableCell.append(imgThumb);
         break;
 
-      case 'movies':
+      case 'video':
         videoIcon = createIcon();
+        videoIcon.addEventListener('click', () => {
+          console.log(value);
+          popup.openPopup(value, 'video');
+        })
         tableCell.append(videoIcon);
         break;
 

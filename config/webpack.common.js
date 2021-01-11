@@ -31,6 +31,11 @@ module.exports = {
           to:  path.resolve(__dirname, '../dist/images'),
           noErrorOnMissing: true,
         },
+        {
+          from: path.resolve(__dirname, '../src/video'),
+          to:  path.resolve(__dirname, '../dist/video'),
+          noErrorOnMissing: true,
+        },
       ],
     }),
 
@@ -66,7 +71,7 @@ module.exports = {
       // Images: Copy image files to build folder
       // { test: /\.(png|jpe?g|svg|gif|ico|webp)$/,
       //   use: ['file-loader'] },
-      { test: /\.(?:ico|gif|png|jpg|jpeg|svg|webp)$/i, type: 'asset/resource' },
+      { test: /\.(?:ico|gif|png|jpg|jpeg|svg|webp|mp4)$/i, type: 'asset/resource' },
 
       // Fonts and SVGs: Inline files
       { test: /\.(woff(2)?|eot|ttf|otf|svg|)$/, type: 'asset/inline' },
