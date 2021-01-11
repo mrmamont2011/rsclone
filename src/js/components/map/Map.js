@@ -1,25 +1,13 @@
 /* eslint import/no-cycle: [0] */
 import ymaps from 'ymaps';
+import getByLevel from '../filter/filter';
 
 export default class Map {
   constructor() {
     this.data = null;
     this.point = [];
-
-    this.dataPopulation = null;
     this.contextMap = null;
-    this.highlightedDistrict = null;
-    this.districtBalloon = null;
     this.ymaps = null;
-    this.isoPopulation = {};
-    this.isoTotalConfirmed = {};
-    this.isoNewConfirmed = {};
-    this.districtCollections = {};
-    this.bordersInfo = {};
-    this.cord = [];
-    this.nameCountryCode = {};
-    this.bordersFeatures = {}; // { код страны: feature от this.ymaps.borders.load }
-    this.countryIndexes = {}; // { код страны: индекс страны в yandex geoObjects }
   }
 
   init(data) {
@@ -41,40 +29,29 @@ export default class Map {
     });
   }
 
-  createStaticPane(map) {
-    return new this.ymaps.pane.StaticPane(map, {
-      zIndex: 100,
-      css: {
-        width: '100%',
-        height: '100%',
-        backgroundColor: '#f7f7f7',
-        opacity: '0.3',
-      },
-    });
-  }
-
   async initYandexMap() {
     this.createYMaps();
-    const pane = this.createStaticPane(this.contextMap);
-    this.contextMap.panes.append('white', pane);
-    // const plac1 = new this.ymaps.Placemark([56.24309266089005, 43.96825220147877], {});
-    //  this.contextMap.geoObjects.add(plac1);
-    console.log(this.data);
-    this.data.forEach(({
-      _id, geo, problem, status, comment,
-    }) => {
-      console.log(problem);
 
-      this.point[_id] = new this.ymaps.Placemark([Number(geo.slice(1, geo.length - 1).split(',')[0]), Number(geo.slice(1, geo.length - 1).split(',')[1])], {
+    const collection = new this.ymaps.GeoObjectCollection();
+
+    this.data.forEach(({
+      location, problem, status, type, userComment,
+    }) => {
+      // replace brackets for json parse
+      const re = /'/gi;
+      const newstr = location.replace(re, '"');
+      const geo = JSON.parse(newstr);
+
+      collection.add(new this.ymaps.Placemark([geo.latitude, geo.longitude], {
         hintContent: `${problem}`,
-        balloonContent: `${comment}`,
+        balloonContent: `${type}`,
       },
       {
-        iconColor: status,
-      });
-
-      this.contextMap.geoObjects.add(this.point[_id]);
+        iconColor: getByLevel(status).color,
+      }));
     });
+
+    this.contextMap.geoObjects.add(collection);
   }
 
   async initMap() {
