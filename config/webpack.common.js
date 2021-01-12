@@ -17,6 +17,10 @@ module.exports = {
     publicPath: '/',
   },
 
+  externals: {
+    jquery: 'jQuery',
+  },
+
   // Customize the webpack build process
   plugins: [
     

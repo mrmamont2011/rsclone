@@ -1,6 +1,6 @@
 /* eslint import/no-cycle: [0] */
 import ymaps from 'ymaps';
-import getByLevel from '../filter/filter';
+import getByLevel from '../filter/filterSelect';
 
 export default class Map {
   constructor() {
@@ -35,7 +35,7 @@ export default class Map {
     const collection = new this.ymaps.GeoObjectCollection();
 
     this.data.forEach(({
-      location, problem, status, type, userComment,
+      location, problem, status, type,
     }) => {
       // replace brackets for json parse
       const re = /'/gi;

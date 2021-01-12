@@ -18,7 +18,7 @@
       </header>
       <main class="page" id="wrap">
         <div class="filter" id="filter">         
-          <div class="filter__level-select">
+          <div class="filter__level-wrap">
             <select>
               <option value="hide">По статусу</option>
               <option value="all">По статусу</option>
@@ -28,7 +28,7 @@
             </select>
           </div>
 
-          <div class="filter__type-select">
+          <div class="filter__type-wrap">
             <select>
               <option value="hide">По типу</option>
               <option value="all">По типу</option>
@@ -38,11 +38,15 @@
               <option value="деревья">Деревья</option>
             </select>
           </div>
+
+          <div class="filter__date-wrap">
+            <input id="filter-date" type="text" readonly="readonly" placeholder="По дате">
+          </div>
         </div>
         
         <div class="page__right" id="right_panel">
-          <div class="map hidden" id="map"></div>
-          <div class="page__right-table">
+          <div class="map" id="map"></div>
+          <div class="page__right-table hidden">
             <table class="table table-hover " id="table"></table>
           </div>
         </div>
