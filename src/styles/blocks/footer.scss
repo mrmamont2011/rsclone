@@ -1,4 +1,51 @@
 .footer {
   padding: 20px 0;
-  background-color:rgb(39, 39, 39);
+  background-color: var(--gray-dark);
+  color: var(--light)
+}
+
+.footer__cont {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer__copy-list {
+  width: 400px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.footer__copy-item {
+  margin-right: 50px;
+
+  &:nth-of-type(2n) {
+    margin-right: 0;
+    margin-left: auto;
+  }
+}
+
+.footer__author {
+  margin-right: 10px;
+  font-size: 14px;
+}
+
+.footer__link {
+  display: flex;
+  align-items: center;
+  transition: .3s;
+
+  &:hover {
+    opacity: .7;
+  }
+}
+
+.footer__link-img {
+  width: 25px;
+  height: 25px;
+
+  &--rsschool {
+    width: 6vw;
+    margin-right: 18vw;
+  }
 }

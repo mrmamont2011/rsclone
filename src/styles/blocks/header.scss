@@ -1,4 +1,36 @@
 .header {
-  padding: 15px 0;
-  background-color: rgb(39, 39, 39);
+  padding: 22px 0;
+  background-color: var(--light);
 }
+
+.header__cont {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header__logo {
+  transition: .3s;
+}
+
+.header__link {
+  font-size: 16px;
+  font-style: italic;
+  display: flex;
+  align-items: center;
+  transition: .2s;
+
+  &-text {
+    margin-right: 12px;
+  }
+
+  &-icon {
+    width: 27px;
+    height: 27px;
+  }
+
+  &:hover {
+    opacity: .7;
+  }
+}
+
