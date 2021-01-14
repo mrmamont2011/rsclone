@@ -106,9 +106,9 @@
     background-color: $select-background;
   }
 
-  &__level-wrap.activeFilter,
-  &__type-wrap.activeFilter,
-  &__date-wrap.activeFilter {
+  &__level-wrap.active-wrap,
+  &__type-wrap.active-wrap,
+  &__date-wrap.active-wrap {
     box-shadow: $shadow-filter-active;
   }
 
@@ -126,6 +126,36 @@
         .filter-circle_4 {
           background-color: $received-option-color;
         }
+      }
+    }
+  }
+
+  .date__wrap {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    font-size: 16px;
+    color: #414042;
+    width: 280px;
+    height: 60px;
+
+    &::after {
+      content: "";
+      width: 0;
+      height: 0;
+      border: 7px solid transparent;
+      border-color: #414042 transparent transparent transparent;
+      position: absolute;
+      top: 27px;
+      right: 20px;
+    }
+    &:active,
+    &.active {
+      background-color: darken($select-background, 5);
+
+      &:after {
+        top: 20px;
+        border-color: transparent transparent $select-color transparent;
       }
     }
   }

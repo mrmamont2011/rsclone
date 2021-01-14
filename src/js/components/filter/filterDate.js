@@ -13,7 +13,7 @@ import moment from 'moment';
  *    statement: 'momentDate >= startDate && momentDate <= endDate',
  * });
  *
- *  return filtered data object by start and end date without time
+ * return filtered data object by start and end date without time
  * @param date
  * @param filteredData
  * @return object

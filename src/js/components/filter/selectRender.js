@@ -21,6 +21,7 @@ export default function initRenderFilter(selectWrap) {
 
     const selectStyled = document.createElement('div');
     selectStyled.className = 'select-styled';
+
     const divWrapper = mainWrap.querySelector('.select');
     divWrapper.append(selectStyled);
     selectStyled.textContent = element.children[0].textContent;
@@ -39,35 +40,5 @@ export default function initRenderFilter(selectWrap) {
       spanStyled.className = `filter-circle filter-circle_${i}`;
       liStyled.append(spanStyled);
     }
-
-    const selecStyled = mainWrap.querySelector('.select-styled');
-
-    selecStyled.addEventListener('click', (e) => {
-      e.stopPropagation();
-      if (selecStyled.classList.contains('active')) {
-        selecStyled.classList.remove('active');
-        ulStyled.style.display = 'none';
-      } else {
-        selecStyled.classList.add('active');
-        ulStyled.style.display = 'block';
-      }
-    }, false);
-
-    mainWrap.querySelector('.select').addEventListener('click', (e) => {
-      e.stopPropagation();
-      if (e.target && e.target.matches('li')) {
-        selectStyled.textContent = e.target.textContent;
-
-        if (selecStyled.classList.contains('active')) {
-          ulStyled.style.display = 'none';
-          selecStyled.classList.remove('active');
-        }
-      }
-    }, false);
-
-    document.addEventListener('click', () => {
-      selecStyled.classList.remove('active');
-      ulStyled.style.display = 'none';
-    });
   });
 }
