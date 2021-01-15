@@ -7,9 +7,6 @@ import { data } from '../../constants';
  * @return void
  */
 
-// TODO: Анимация открытия фильтров типа и статуса
-// TODO: Анимация выбранного фильтра. Плавное появление полосы слева направо.
-
 export default function filterEvents() {
   const map = new Map();
   const mapEl = document.querySelector('#map');
@@ -17,8 +14,7 @@ export default function filterEvents() {
   const dateEl = document.querySelector('#filter-date');
   const select = document.querySelectorAll('#filter .select');
 
-  styledSelect.forEach((styled, i) => {
-    styled.setAttribute('data-select-id', i);
+  styledSelect.forEach((styled) => {
     styled.addEventListener('click', (e) => {
       e.stopPropagation();
       const { target } = e;
@@ -29,13 +25,11 @@ export default function filterEvents() {
       const ulOptions = document.querySelectorAll('#filter .select-options');
 
       ulOptions.forEach((option, j) => {
-        option.setAttribute('data-select-id', j);
         const style = option;
-        if (option.getAttribute('data-select-id') === styled.getAttribute('data-select-id')) {
-          style.style.display = 'block';
-          console.log();
+        if (option.getAttribute('data-toogle-id') === styled.getAttribute('data-toogle-id')) {
+          style.classList.add('active');
         } else {
-          style.style.display = 'none';
+          style.classList.remove('active');
         }
       });
     }, false);
@@ -61,8 +55,8 @@ export default function filterEvents() {
     if (!target.classList.contains('active')) {
       styledSelect.forEach((styled) => {
         styled.classList.remove('active');
-        const options = styled;
-        options.nextSibling.style.display = 'none';
+        const options = styled.nextSibling;
+        options.classList.remove('active');
       });
     }
   });

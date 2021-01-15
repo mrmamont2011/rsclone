@@ -2,7 +2,7 @@ import './styles/main.scss';
 import Map from './js/components/map/Map';
 import Table from './js/components/table/Table';
 import { data } from './js/constants';
-import renderSelect from './js/components/filter/selectRender';
+import renderSelectInit from './js/components/filter/selectRender';
 import dateRender from './js/components/filter/dateRender';
 import filterEvents from './js/components/filter/filterEvents';
 
@@ -18,9 +18,9 @@ const table = new Table();
     map.init(data);
     table.init(data);
 
-    renderSelect('.filter__level-wrap');
+    const renderSelect = renderSelectInit();
+    renderSelect('.filter__status-wrap');
     renderSelect('.filter__type-wrap');
-
     dateRender(data);
     filterEvents();
     // filter events

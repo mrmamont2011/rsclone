@@ -55,7 +55,9 @@
       }
     }
   }
-
+  .select-options.active {
+    display: block;
+  }
   .select-options {
     display: none;
     position: absolute;
@@ -84,9 +86,6 @@
       padding: 10px 0;
       text-indent: 20px;
       border-top: 1px solid darken($select-background, 10);
-      transition: all,
-      .2s,
-      ease-in-out;
 
       &:hover {
         background: $mid-gray;
@@ -98,7 +97,7 @@
     }
   }
 
-  &__level-wrap,
+  &__status-wrap,
   &__type-wrap,
   &__date-wrap {
     box-shadow: $shadow-filter;
@@ -106,13 +105,13 @@
     background-color: $select-background;
   }
 
-  &__level-wrap.active-wrap,
+  &__status-wrap.active-wrap,
   &__type-wrap.active-wrap,
   &__date-wrap.active-wrap {
     box-shadow: $shadow-filter-active;
   }
 
-  &__level-wrap {
+  &__status-wrap {
     .select-options {
       li {
         .filter-circle_2 {
