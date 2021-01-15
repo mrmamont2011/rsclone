@@ -21,6 +21,7 @@ const table = new Table();
     const renderSelect = renderSelectInit();
     renderSelect('.filter__status-wrap');
     renderSelect('.filter__type-wrap');
+    renderSelect('.filter__problem-wrap');
     dateRender(data);
     filterEvents();
     // filter events

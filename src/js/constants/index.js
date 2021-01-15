@@ -72,7 +72,7 @@ export const data = [
   {
     _id: '5fea0554b20baa05a841403a',
     type: 'автотранспорт',
-    problem: 'брошенный',
+    problem: 'брошенный  авто',
     date: 'Thu Jan 07 2021 19:48:55 GMT+0000 (Coordinated Universal Time)',
     location: "{'latitude': '56.31465059868182', 'longitude': '44.01653963308927'}",
     image: ['./images/001.jpg'],
@@ -100,7 +100,7 @@ export const data = [
   {
     _id: '5fea0554b20baa05a841403a',
     type: 'деревья',
-    problem: 'представляющее опасность падения',
+    problem: 'поваленные',
     date: 'Sat Jan 09 2021 05:58:36 GMT+0000 (Coordinated Universal Time)',
     location: "{'latitude': '56.28176729820236', 'longitude': '44.03699586001902'}",
     image: ['./images/003.jpg'],
@@ -131,6 +131,18 @@ export const filters = {
     container: 'мусорный контейнер',
     auto: 'автотранспорт',
     tree: 'деревья',
+  },
+  problem: {
+    constructTrash: 'строительный мусор',
+    houseTrash: 'бытовой мусор',
+    comercialTrash: 'коммерческий мусор',
+    overContainer: 'переполенный',
+    brokenContainer: 'сломанный',
+    missedContainer: 'отсутствует',
+    abandonedCar: 'брошенный  авто',
+    firedCar: 'сгоревший авто',
+    sawedTrees: 'спиленные',
+    fallenTrees: 'поваленные',
   },
 };
 

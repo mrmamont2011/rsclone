@@ -3,7 +3,7 @@ import getByFilter from './filterSelect';
 import { data } from '../../constants';
 
 /**
- * add filter events
+ * filter events
  * @return void
  */
 
@@ -24,7 +24,7 @@ export default function filterEvents() {
 
       const ulOptions = document.querySelectorAll('#filter .select-options');
 
-      ulOptions.forEach((option, j) => {
+      ulOptions.forEach((option) => {
         const style = option;
         if (option.getAttribute('data-toogle-id') === styled.getAttribute('data-toogle-id')) {
           style.classList.add('active');
@@ -79,7 +79,7 @@ export default function filterEvents() {
         const rel = target.getAttribute('rel');
         const filteredData = getByFilter(rel, data);
         mapEl.innerHTML = '';
-        map.updateData = filteredData.levelData || [];
+        map.updateData = filteredData.data || [];
         const styledTxt = sel.children[1];
         styledTxt.textContent = target.textContent;
       }

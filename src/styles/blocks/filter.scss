@@ -99,7 +99,8 @@
 
   &__status-wrap,
   &__type-wrap,
-  &__date-wrap {
+  &__date-wrap,
+  &__problem-wrap {
     box-shadow: $shadow-filter;
     margin-top: 30px;
     background-color: $select-background;
@@ -107,7 +108,8 @@
 
   &__status-wrap.active-wrap,
   &__type-wrap.active-wrap,
-  &__date-wrap.active-wrap {
+  &__date-wrap.active-wrap,
+  &__problem-wrap.active-wrap {
     box-shadow: $shadow-filter-active;
   }
 

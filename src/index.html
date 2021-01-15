@@ -17,7 +17,34 @@
         </div>
       </header>
       <main class="page" id="wrap">
-        <div class="filter" id="filter">         
+        <div class="filter" id="filter">
+          <div class="filter__type-wrap">
+            <select>
+              <option value="hide">По типу проблемы</option>
+              <option value="all">По типу</option>
+              <option value="незаконная свалка">Незаконная свалка</option>
+              <option value="мусорный контейнер">Мусорный контейнер</option>
+              <option value="автотранспорт">Автотранспорт</option>
+              <option value="деревья">Деревья</option>
+            </select>
+          </div>
+          <div class="filter__problem-wrap">
+            <select>
+              <option value="hide">Проблема</option>
+              <option value="all">Проблема</option>
+              <option value="строительный мусор">Строительный мусор</option>
+              <option value="бытовой мусор">Бытовой мусор</option>
+              <option value="коммерческий мусор">Коммерческий мусор</option>
+              <option value="переполенный">Переполенный контейнер</option>
+              <option value="сломанный">Сломанный контейнер</option>
+              <option value="отсутствует">Отсутствует контейнер</option>
+              <option value="брошенный  авто">Брошенный авто</option>
+              <option value="сгоревший авто">Сгоревший авто</option>
+              <option value="спиленные">Спиленные деревья</option>
+              <option value="поваленные">Поваленные деревья</option>
+            </select>
+          </div>
+
           <div class="filter__status-wrap">
             <select>
               <option value="hide">По статусу</option>
@@ -28,24 +55,20 @@
             </select>
           </div>
 
-          <div class="filter__type-wrap">
-            <select>
-              <option value="hide">По типу</option>
-              <option value="all">По типу</option>
-              <option value="незаконная свалка">Незаконная свалка</option>
-              <option value="мусорный контейнер">Мусорный контейнер</option>
-              <option value="автотранспорт">Автотранспорт</option>
-              <option value="деревья">Деревья</option>
-            </select>
-          </div>
+
 
           <div class="filter__date-wrap">
             <div class="date__wrap">
               <input id="filter-date" type="text" readonly="readonly" placeholder="По дате">
             </div>
           </div>
+
+
+
         </div>
-        
+
+
+
         <div class="page__right" id="right_panel">
           <div class="map" id="map"></div>
           <div class="page__right-table hidden">
