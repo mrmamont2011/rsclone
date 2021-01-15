@@ -55,7 +55,9 @@
       }
     }
   }
-
+  .select-options.active {
+    display: block;
+  }
   .select-options {
     display: none;
     position: absolute;
@@ -84,9 +86,6 @@
       padding: 10px 0;
       text-indent: 20px;
       border-top: 1px solid darken($select-background, 10);
-      transition: all,
-      .2s,
-      ease-in-out;
 
       &:hover {
         background: $mid-gray;
@@ -98,14 +97,23 @@
     }
   }
 
-  &__level-select,
-  &__type-select {
+  &__status-wrap,
+  &__type-wrap,
+  &__date-wrap,
+  &__problem-wrap {
     box-shadow: $shadow-filter;
     margin-top: 30px;
     background-color: $select-background;
   }
 
-  &__level-select {
+  &__status-wrap.active-wrap,
+  &__type-wrap.active-wrap,
+  &__date-wrap.active-wrap,
+  &__problem-wrap.active-wrap {
+    box-shadow: $shadow-filter-active;
+  }
+
+  &__status-wrap {
     .select-options {
       li {
         .filter-circle_2 {
@@ -121,5 +129,56 @@
         }
       }
     }
+  }
+
+  .date__wrap {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    font-size: 16px;
+    color: #414042;
+    width: 280px;
+    height: 60px;
+
+    &::after {
+      content: "";
+      width: 0;
+      height: 0;
+      border: 7px solid transparent;
+      border-color: #414042 transparent transparent transparent;
+      position: absolute;
+      top: 27px;
+      right: 20px;
+    }
+    &:active,
+    &.active {
+      background-color: darken($select-background, 5);
+
+      &:after {
+        top: 20px;
+        border-color: transparent transparent $select-color transparent;
+      }
+    }
+  }
+
+  &__date-wrap {
+
+    input {
+      &:focus {
+        outline: none;
+      }
+
+      cursor: pointer;
+
+      &::placeholder {
+        color: $select-color;
+      }
+
+      padding: 20px 20px;
+      width: $select-width;
+      height: $select-height;
+      border: none;
+    }
+
   }
 }
