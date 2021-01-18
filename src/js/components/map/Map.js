@@ -27,6 +27,14 @@ export default class Map {
       autoFitToViewport: 'always',
       controls: ['zoomControl', 'fullscreenControl'],
     });
+
+    const searchControl = new this.ymaps.control.SearchControl({
+      options: {
+        float: 'right',
+      },
+    });
+
+    this.contextMap.controls.add(searchControl);
   }
 
   async initYandexMap() {

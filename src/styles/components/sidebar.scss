@@ -1,8 +1,44 @@
-.filter {
+.sidebar.hided{
+  width: 0;
+  padding: 0;
+}
+
+.sidebar {
+
   width: 320px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 0 15px;
+  padding-top: 30px;
+  transition: 0.5s;
+  position: relative;
+  background-color: #F8F9FA;
+
+  &_hide-button {
+    position: absolute;
+    right: -22px;
+    top: 39px;
+    background: #F8F9FA;
+    z-index: 1;
+    width: 22px;
+    height: 22px;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    transition: .2s;
+
+    &-text {
+      margin-right: 12px;
+    }
+
+    &-icon {
+      width: 27px;
+      height: 27px;
+    }
+  }
 
   .select-hidden {
     display: none;
@@ -55,9 +91,11 @@
       }
     }
   }
+
   .select-options.active {
     display: block;
   }
+
   .select-options {
     display: none;
     position: absolute;
@@ -97,6 +135,15 @@
     }
   }
 
+  &__find-wrap {
+    width: 100%;
+    height: 99px;
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+    margin-top: 30px;
+  }
+
   &__status-wrap,
   &__type-wrap,
   &__date-wrap,
@@ -131,6 +178,37 @@
     }
   }
 
+  .find__wrap {
+    display: flex;
+    width: 280px;
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2), 0 0px 0 0 rgba(0, 0, 0, 0.19);
+    border-radius: 5px;
+    padding: 10px 15px;
+    background: white;
+    align-items: center;
+
+    .find__form {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+
+      input {
+        border: 0;
+        background-color: transparent;
+        width: 100%;
+
+        &::placeholder {
+          color: $select-color;
+        }
+
+        &:focus {
+          background-color: $shadow-filter-active;
+          outline: none;
+        }
+      }
+    }
+  }
+
   .date__wrap {
     cursor: pointer;
     display: inline-block;
@@ -150,6 +228,7 @@
       top: 27px;
       right: 20px;
     }
+
     &:active,
     &.active {
       background-color: darken($select-background, 5);
@@ -162,6 +241,7 @@
   }
 
   &__date-wrap {
+    margin-bottom: 50px;
 
     input {
       &:focus {
