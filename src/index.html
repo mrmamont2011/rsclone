@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
   <meta charset="utf-8" />
@@ -9,81 +9,80 @@
 </head>
 
 <body>
-  <div class="wrapper">
-    <div class="wrapper__content">
-      <header class="header" id="header">
-        <div class="cont header__cont">
-          <h1 class="page-title">
-            <a href="#" class="header__logo">Антимусор</a>
-          </h1>
-          <a class=" btn btn-primary header__link" href="tg://resolve?domain=NikName">
-            <span class="header__link-text">Сообщить о проблеме </span>
-            <img class="header__link-icon" src="./images/telegram.png" alt="telegram">
-          </a>
-        </div>
-      </header>
-      <main class="page" id="wrap">
-        <div class="filter" id="filter">
-          <div class="filter__type-wrap">
-            <select>
-              <option value="hide">По типу проблемы</option>
-              <option value="all">По типу</option>
-              <option value="незаконная свалка">Незаконная свалка</option>
-              <option value="мусорный контейнер">Мусорный контейнер</option>
-              <option value="автотранспорт">Автотранспорт</option>
-              <option value="деревья">Деревья</option>
-            </select>
-          </div>
-          <div class="filter__problem-wrap">
-            <select>
-              <option value="hide">Проблема</option>
-              <option value="all">Проблема</option>
-              <option value="строительный мусор">Строительный мусор</option>
-              <option value="бытовой мусор">Бытовой мусор</option>
-              <option value="коммерческий мусор">Коммерческий мусор</option>
-              <option value="переполенный">Переполенный контейнер</option>
-              <option value="сломанный">Сломанный контейнер</option>
-              <option value="отсутствует">Отсутствует контейнер</option>
-              <option value="брошенный  авто">Брошенный авто</option>
-              <option value="сгоревший авто">Сгоревший авто</option>
-              <option value="спиленные">Спиленные деревья</option>
-              <option value="поваленные">Поваленные деревья</option>
-            </select>
-          </div>
+  <div class="app">
+    <main class="wrapper">
 
-          <div class="filter__status-wrap">
-            <select>
-              <option value="hide">По статусу</option>
-              <option value="all">По статусу</option>
-              <option value="done">Сделано</option>
-              <option value="pending">В работе</option>
-              <option value="new">Получено</option>
-            </select>
-          </div>
+      <aside class="sidebar" id="filter">
 
+        <button class="sidebar_hide-button" id='hide-panel'><i class="far fa-caret-square-left"></i></i></button>
 
+        <h1 class="sidebar__title">
+          <a href="#" class="logo">Антимусор</a>
+        </h1>
 
-          <div class="filter__date-wrap">
-            <div class="date__wrap">
-              <input id="filter-date" type="text" readonly="readonly" placeholder="По дате">
-            </div>
-          </div>
-
-
-
-        </div>
-
-
-
-        <div class="page__right" id="right_panel">
-          <div class="map" id="map"></div>
-          <div class="page__right-table hidden">
-            <table class="table table-hover" id="table"></table>
+        <div class="sidebar__find-wrap">
+          <div class="find__wrap">
+            <form class='find__form' id='find-action'>
+              <input id="find-input" type="text" placeholder="Поиск...">
+              <button type="submit"><i class="fas fa-search-location"></i></button>
+            </form>
           </div>
         </div>
-      </main>
-    </div>
+        <div class="sidebar__type-wrap">
+          <select>
+            <option value="hide">По типу проблемы</option>
+            <option value="all">По типу</option>
+            <option value="незаконная свалка">Незаконная свалка</option>
+            <option value="мусорный контейнер">Мусорный контейнер</option>
+            <option value="автотранспорт">Автотранспорт</option>
+            <option value="деревья">Деревья</option>
+          </select>
+        </div>
+        <div class="sidebar__problem-wrap">
+          <select>
+            <option value="hide">Проблема</option>
+            <option value="all">Проблема</option>
+            <option value="строительный мусор">Строительный мусор</option>
+            <option value="бытовой мусор">Бытовой мусор</option>
+            <option value="коммерческий мусор">Коммерческий мусор</option>
+            <option value="переполенный">Переполенный контейнер</option>
+            <option value="сломанный">Сломанный контейнер</option>
+            <option value="отсутствует">Отсутствует контейнер</option>
+            <option value="брошенный  авто">Брошенный авто</option>
+            <option value="сгоревший авто">Сгоревший авто</option>
+            <option value="спиленные">Спиленные деревья</option>
+            <option value="поваленные">Поваленные деревья</option>
+          </select>
+        </div>
+        <div class="sidebar__status-wrap">
+          <select>
+            <option value="hide">По статусу</option>
+            <option value="all">По статусу</option>
+            <option value="done">Сделано</option>
+            <option value="pending">В работе</option>
+            <option value="new">Получено</option>
+          </select>
+        </div>
+        <div class="sidebar__date-wrap">
+          <div class="date__wrap">
+            <input id="filter-date" type="text" readonly="readonly" placeholder="По дате">
+          </div>
+        </div>
 
+        <a class="btn btn-primary sidebar__link" href="tg://resolve?domain=NikName">
+          <span class="sidebar__link-text">Сообщить о проблеме </span>
+          <img class="sidebar__link-icon" src="./images/telegram.png" alt="telegram">
+        </a>
+
+      </aside>
+
+      <section class="map" id="map"></section>
+
+      <section class="table-wrapper hidden">
+        <table class="table table-hover" id="table"></table>
+      </section>
+
+    </main>
     <footer class="footer">
       <div class="cont footer__cont">
         <ul class="footer__copy-list">
@@ -128,9 +127,10 @@
     <a href="#" class="close-button" id="button_close__popup">
       <svg class="close-button__icon">
         <use xlink:href="images/sprite.svg#close"></use>
-    </svg>
+      </svg>
     </a>
     <div class="popup__content" id="popup-content"></div>
   </div>
 </body>
+
 </html>

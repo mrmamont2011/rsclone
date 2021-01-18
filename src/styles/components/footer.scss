@@ -1,7 +1,9 @@
 .footer {
   padding: 20px 0;
   background-color: var(--gray-dark);
-  color: var(--light)
+  color: var(--light);
+  z-index: 99;
+  position: relative;
 }
 
 .footer__cont {

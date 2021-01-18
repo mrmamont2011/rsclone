@@ -10,9 +10,11 @@ import { data } from '../../constants';
 export default function filterEvents() {
   const map = new Map();
   const mapEl = document.querySelector('#map');
+  const filter = document.querySelector('#filter');
   const styledSelect = document.querySelectorAll('#filter .select-styled');
   const dateEl = document.querySelector('#filter-date');
   const select = document.querySelectorAll('#filter .select');
+  const hide = document.querySelector('#hide-panel');
 
   styledSelect.forEach((styled) => {
     styled.addEventListener('click', (e) => {
@@ -84,5 +86,9 @@ export default function filterEvents() {
         styledTxt.textContent = target.textContent;
       }
     }, false);
+  });
+
+  hide.addEventListener('click', (e) => {
+    filter.classList.toggle('hided');
   });
 }
