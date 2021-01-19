@@ -4,9 +4,11 @@ import Table from './js/components/table/Table';
 import { data } from './js/constants';
 import renderFilter from './js/components/filter/filterRender';
 import getByFilter from './js/components/filter/filter';
+import Toggle from './js/components/toggle/Toggle';
 
 const map = new Map();
 const table = new Table();
+const toggle = new Toggle();
 
 const main = async () => {
   try {
