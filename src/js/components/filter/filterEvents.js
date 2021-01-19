@@ -1,7 +1,7 @@
 import Map from '../map/Map';
 import getByFilter from './filterSelect';
 import { data } from '../../constants';
-
+import filterSearch from './filterSearch';
 /**
  * filter events
  * @return void
@@ -16,6 +16,8 @@ export default function filterEvents() {
   const select = document.querySelectorAll('#filter .select');
   const hide = document.querySelector('#hide-panel');
   const tableWrap = document.querySelector('.table-wrapper');
+  const findForm = document.querySelector('#findForm');
+  const findInput = document.querySelector('#find-input');
 
   styledSelect.forEach((styled) => {
     styled.addEventListener('click', (e) => {
@@ -92,5 +94,13 @@ export default function filterEvents() {
   hide.addEventListener('click', () => {
     tableWrap.classList.toggle('expanded');
     filter.classList.toggle('hided');
+  });
+
+  findForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const formValue = findInput.value.toString();
+    const searchData = filterSearch(data, formValue);
+    mapEl.innerHTML = '';
+    map.updateData = searchData || [];
   });
 }
