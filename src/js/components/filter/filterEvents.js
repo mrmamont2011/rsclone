@@ -15,6 +15,7 @@ export default function filterEvents() {
   const dateEl = document.querySelector('#filter-date');
   const select = document.querySelectorAll('#filter .select');
   const hide = document.querySelector('#hide-panel');
+  const tableWrap = document.querySelector('.table-wrapper');
 
   styledSelect.forEach((styled) => {
     styled.addEventListener('click', (e) => {
@@ -89,6 +90,7 @@ export default function filterEvents() {
   });
 
   hide.addEventListener('click', (e) => {
+    tableWrap.classList.toggle('hided');
     filter.classList.toggle('hided');
   });
 }
