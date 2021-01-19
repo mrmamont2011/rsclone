@@ -6,6 +6,8 @@ import renderSelectInit from './js/components/filter/selectRender';
 import dateRender from './js/components/filter/dateRender';
 import filterEvents from './js/components/filter/filterEvents';
 
+import filterSearch from './js/components/filter/filterSearch';
+
 // font awesome include
 import '@fortawesome/fontawesome-free/js/fontawesome';
 import '@fortawesome/fontawesome-free/js/solid';
@@ -30,6 +32,8 @@ const table = new Table();
     renderSelect('.sidebar__problem-wrap');
     dateRender(data);
     filterEvents();
+
+    // console.log(filterSearch(data, 'мусор'));
   } catch (err) {
     // eslint-disable-next-line no-alert
     alert(err);
