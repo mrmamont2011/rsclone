@@ -89,8 +89,8 @@ export default function filterEvents() {
     }, false);
   });
 
-  hide.addEventListener('click', (e) => {
-    tableWrap.classList.toggle('hided');
+  hide.addEventListener('click', () => {
+    tableWrap.classList.toggle('expanded');
     filter.classList.toggle('hided');
   });
 }
