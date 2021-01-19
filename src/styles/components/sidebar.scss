@@ -1,6 +1,5 @@
-.sidebar.hided{
-  width: 0;
-  padding: 0;
+.sidebar.hided {
+  left: -320px;
 }
 
 .sidebar {
@@ -12,8 +11,19 @@
   padding: 0 15px;
   padding-top: 30px;
   transition: 0.5s;
-  position: relative;
+  position: fixed;
   background-color: #F8F9FA;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  height: 100%;
+
+  &__title {
+    font-size: 2em;
+    font-weight: 700;
+    color: var(--gray-dark);
+    text-shadow: 0px 1px 1px var(--dark);
+  }
 
   &_hide-button {
     position: absolute;

@@ -6,13 +6,13 @@ import renderSelectInit from './js/components/filter/selectRender';
 import dateRender from './js/components/filter/dateRender';
 import filterEvents from './js/components/filter/filterEvents';
 
-// font awesome include
+// font awesome
 import '@fortawesome/fontawesome-free/js/fontawesome';
 import '@fortawesome/fontawesome-free/js/solid';
 import '@fortawesome/fontawesome-free/js/regular';
 import '@fortawesome/fontawesome-free/js/brands';
 
-// Jquery dependencies for air-datepicker
+// Air-datepicker
 require('../node_modules/jquery/src/jquery');
 require('../node_modules/air-datepicker/src/js/air-datepicker');
 

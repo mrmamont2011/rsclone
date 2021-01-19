@@ -25,7 +25,7 @@ export default class Map {
       center: [56.3228, 43.9980],
       zoom: 11,
       autoFitToViewport: 'always',
-      controls: ['zoomControl', 'fullscreenControl'],
+      controls: ['fullscreenControl'],
     });
 
     const searchControl = new this.ymaps.control.SearchControl({
