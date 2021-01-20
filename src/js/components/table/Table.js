@@ -90,7 +90,6 @@ export default class Table {
       case 'video':
         videoIcon = createIcon();
         videoIcon.addEventListener('click', () => {
-          console.log(value);
           popup.openPopup(value, 'video');
         });
         tableCell.append(videoIcon);
@@ -115,7 +114,7 @@ export default class Table {
     const dateHour = date.getHours();
     const dateMin = date.getMinutes();
 
-    return `${dateDay}.${dateMonth}.${dateYear} ${addZero(dateHour)}:${addZero(dateMin)}`;
+    return `${addZero(dateDay)}.${addZero(dateMonth)}.${dateYear} ${addZero(dateHour)}:${addZero(dateMin)}`;
   }
 
   init(data) {

@@ -7,6 +7,7 @@ export default class Popup {
     this.popupDom = document.querySelector('#popup');
     this.popupContent = document.querySelector('#popup-content');
     this.closePopupBtn = document.querySelector('#button_close__popup');
+    this.popupVideo = null;
   }
 
   openPopup(source, tag) {
@@ -17,9 +18,9 @@ export default class Popup {
     if (tag === 'image') {
       this.popupContent.append(createDomElem('img', 'popup__photo', source));
     } else if (tag === 'video') {
-      const videoDom = createDomElem('video', 'video', source);
-      videoDom.setAttribute('controls', 'controls');
-      this.popupContent.append(videoDom);
+      this.popupVideo = createDomElem('video', 'video', source);
+      this.popupVideo.setAttribute('controls', 'controls');
+      this.popupContent.append(this.popupVideo);
     }
 
     this.popupDom.classList.add('popup--visible');
@@ -28,6 +29,7 @@ export default class Popup {
     this.closePopupBtn.addEventListener('click', (e) => {
       e.preventDefault();
 
+      this.popupVideo.pause();
       overlay.classList.remove('overlay--visible');
       this.popupDom.classList.remove('popup--visible');
       document.body.classList.remove('no-scroll');
