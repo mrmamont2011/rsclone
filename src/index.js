@@ -5,6 +5,7 @@ import { data } from './js/constants';
 import renderSelectInit from './js/components/filter/selectRender';
 import dateRender from './js/components/filter/dateRender';
 import filterEvents from './js/components/filter/filterEvents';
+import Toggle from './js/components/toggle/Toggle';
 
 // font awesome
 import '@fortawesome/fontawesome-free/js/fontawesome';
@@ -18,6 +19,7 @@ require('../node_modules/air-datepicker/src/js/air-datepicker');
 
 const map = new Map();
 const table = new Table();
+const toggle = new Toggle();
 
 (function main() {
   try {

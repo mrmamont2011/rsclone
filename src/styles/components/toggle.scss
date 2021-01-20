@@ -1,0 +1,56 @@
+.toggle {
+  width: 254px;
+  margin-top: 20px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.toggle__input {
+  position: absolute;
+  margin-left: -9999px;
+  visibility: hidden;
+}
+
+.toggle__label {
+  margin-bottom: 0;
+  display: block;
+  position: relative;
+  cursor: pointer;
+  outline: none;
+  user-select: none;
+  width: 105px;
+  height: 35px;
+  background-color: var(--info);
+  border-radius: 25px;
+  transition: background 0.4s;
+
+  &:after {
+    display: block;
+    position: absolute;
+    top: 2px;
+    left: 1px;
+    bottom: 1px;
+    content: "";
+
+    width: 30px;
+    height: 30px;
+    background-color: var(--white);
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    margin-left: 2px;
+    transition: margin 0.4s;
+  }
+}
+
+.toggle__input:checked + .toggle__label {
+  background-color: var(--primary);
+}
+
+.toggle__input:checked + .toggle__label::after {
+  margin-left: 71px;
+}

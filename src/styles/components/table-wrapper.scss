@@ -1,0 +1,13 @@
+.table-wrapper {
+  width: calc(100vw - 320px);
+  padding-right: 1%;
+  flex-shrink: 0;
+  background-color: var(--white);
+  margin-left: 320px;
+  transition: 0.5s;
+}
+
+.table-wrapper.expanded {
+  margin-left: 0;
+  width: 100vw;
+}

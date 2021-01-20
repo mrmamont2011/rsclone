@@ -1,0 +1,11 @@
+.app__content {
+  width: 100%;
+  display: flex;
+  transition: left 1s;
+  position: relative;
+  left: 0;
+}
+
+.app__content.moved {
+  left: -100%;
+}

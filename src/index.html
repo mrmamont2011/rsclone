@@ -20,6 +20,13 @@
           <a href="#" class="logo">Антимусор</a>
         </h1>
 
+		    <div class="toggle" id="toggle">
+          <span class="toggle__text">Карта</span>
+          <input type="checkbox" id="toggle-input" class="toggle__input">
+          <label for="toggle-input" class="toggle__label"></label>
+          <span class="toggle__text">Таблица</span>
+        </div>
+
         <div class="sidebar__find-wrap">
           <div class="find__wrap">
             <form class='find__form' id='findForm'>
@@ -76,11 +83,13 @@
 
       </aside>
 
-      <section class="map" id="map"></section>
-
-      <section class="table-wrapper hidden">
-        <table class="table table-hover" id="table"></table>
-      </section>
+      <div class="app__content" id="app-wrapper">
+        <section class="map" id="map"></section>
+        
+        <section class="table-wrapper" id="table-container">
+          <table class="table table-hover" id="table"></table>
+        </section>
+      </div>
 
     </main>
     <footer class="footer">
