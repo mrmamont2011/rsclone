@@ -41,18 +41,6 @@ body {
   padding: 0 15px;
 }
 
-.table-wrapper.expanded {
-  margin-left: 0;
-}
-
-.table-wrapper {
-  width: 100%;
-  padding-right: 1%;
-  background-color: var(--white);
-  margin-left: 320px;
-  transition: 0.5s;
-}
-
 .logo {
   transition: .3s;
 }
@@ -103,8 +91,6 @@ button {
   background: transparent;
   cursor: pointer;
 }
-
-
 
 table {
   border-collapse: collapse;

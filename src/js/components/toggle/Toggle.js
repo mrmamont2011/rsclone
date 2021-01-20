@@ -1,5 +1,4 @@
-const map = document.querySelector('#map');
-const table = document.querySelector('#table-container');
+const appWrap = document.querySelector('#app-wrapper');
 
 export default class Toggle {
   constructor() {
@@ -12,7 +11,7 @@ export default class Toggle {
   }
 
   static togglePage() {
-    map.classList.toggle('hidden');
-    table.classList.toggle('hidden');
+    appWrap.classList.toggle('moved');
+    window.scrollTo(0, 0);
   }
 }
