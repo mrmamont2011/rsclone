@@ -1,0 +1,274 @@
+.sidebar.hided {
+  left: -320px;
+}
+
+.sidebar {
+
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 15px;
+  padding-top: 30px;
+  transition: 0.5s;
+  position: fixed;
+  background-color: #F8F9FA;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  height: 100%;
+
+  &__title {
+    font-size: 2em;
+    font-weight: 700;
+    color: var(--gray-dark);
+    text-shadow: 0px 1px 1px var(--dark);
+  }
+
+  &_hide-button {
+    position: absolute;
+    right: -22px;
+    top: 39px;
+    background: #F8F9FA;
+    z-index: 1;
+    width: 22px;
+    height: 22px;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    transition: .2s;
+
+    &-text {
+      margin-right: 12px;
+    }
+
+    &-icon {
+      width: 27px;
+      height: 27px;
+    }
+  }
+
+  .select-hidden {
+    display: none;
+    visibility: hidden;
+    padding-right: 20px;
+  }
+
+  .select {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    font-size: 16px;
+    color: $select-color;
+    width: $select-width;
+    height: $select-height;
+  }
+
+  .select-styled {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: $select-background;
+    padding: 20px 20px;
+    transition: all, .2s, ease-in;
+
+    &:after {
+      content: "";
+      width: 0;
+      height: 0;
+      border: 7px solid transparent;
+      border-color: $select-color transparent transparent transparent;
+      position: absolute;
+      top: 27px;
+      right: 20px;
+    }
+
+    &:hover {
+      background-color: darken($select-background, 2);
+    }
+
+    &:active,
+    &.active {
+      background-color: darken($select-background, 5);
+
+      &:after {
+        top: 20px;
+        border-color: transparent transparent $select-color transparent;
+      }
+    }
+  }
+
+  .select-options.active {
+    display: block;
+  }
+
+  .select-options {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    z-index: 999;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    background-color: darken($select-background, 5);
+
+    li {
+      display: flex;
+      justify-content: space-between;
+
+      .filter-circle {
+        height: 19px;
+        width: 19px;
+        border-radius: 50%;
+        display: inline-block;
+        margin: 0 18px;
+      }
+
+      margin: 0;
+      padding: 10px 0;
+      text-indent: 20px;
+      border-top: 1px solid darken($select-background, 10);
+
+      &:hover {
+        background: $mid-gray;
+      }
+
+      &[rel="hide"] {
+        display: none;
+      }
+    }
+  }
+
+  &__find-wrap {
+    width: 100%;
+    height: 99px;
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+    margin-top: 30px;
+  }
+
+  &__status-wrap,
+  &__type-wrap,
+  &__date-wrap,
+  &__problem-wrap {
+    box-shadow: $shadow-filter;
+    margin-top: 30px;
+    background-color: $select-background;
+  }
+
+  &__status-wrap.active-wrap,
+  &__type-wrap.active-wrap,
+  &__date-wrap.active-wrap,
+  &__problem-wrap.active-wrap {
+    box-shadow: $shadow-filter-active;
+  }
+
+  &__status-wrap {
+    .select-options {
+      li {
+        .filter-circle_2 {
+          background-color: $done-option-color;
+        }
+
+        .filter-circle_3 {
+          background-color: $inwork-option-color;
+        }
+
+        .filter-circle_4 {
+          background-color: $received-option-color;
+        }
+      }
+    }
+  }
+
+  .find__wrap {
+    display: flex;
+    width: 280px;
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2), 0 0px 0 0 rgba(0, 0, 0, 0.19);
+    border-radius: 5px;
+    padding: 10px 15px;
+    background: white;
+    align-items: center;
+
+    .find__form {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+
+      input {
+        border: 0;
+        background-color: transparent;
+        width: 100%;
+
+        &::placeholder {
+          color: $select-color;
+        }
+
+        &:focus {
+          background-color: $shadow-filter-active;
+          outline: none;
+        }
+      }
+    }
+  }
+
+  .date__wrap {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    font-size: 16px;
+    color: #414042;
+    width: 280px;
+    height: 60px;
+
+    &::after {
+      content: "";
+      width: 0;
+      height: 0;
+      border: 7px solid transparent;
+      border-color: #414042 transparent transparent transparent;
+      position: absolute;
+      top: 27px;
+      right: 20px;
+    }
+
+    &:active,
+    &.active {
+      background-color: darken($select-background, 5);
+
+      &:after {
+        top: 20px;
+        border-color: transparent transparent $select-color transparent;
+      }
+    }
+  }
+
+  &__date-wrap {
+    margin-bottom: 50px;
+
+    input {
+      &:focus {
+        outline: none;
+      }
+
+      cursor: pointer;
+
+      &::placeholder {
+        color: $select-color;
+      }
+
+      padding: 20px 20px;
+      width: $select-width;
+      height: $select-height;
+      border: none;
+    }
+
+  }
+}

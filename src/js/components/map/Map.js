@@ -1,6 +1,6 @@
 /* eslint import/no-cycle: [0] */
 import ymaps from 'ymaps';
-import getByLevel from '../filter/filter';
+import getByLevel from '../filter/filterSelect';
 
 export default class Map {
   constructor() {
@@ -25,8 +25,16 @@ export default class Map {
       center: [56.3228, 43.9980],
       zoom: 11,
       autoFitToViewport: 'always',
-      controls: ['zoomControl', 'fullscreenControl'],
+      controls: ['fullscreenControl'],
     });
+
+    const searchControl = new this.ymaps.control.SearchControl({
+      options: {
+        float: 'right',
+      },
+    });
+
+    this.contextMap.controls.add(searchControl);
   }
 
   async initYandexMap() {
@@ -35,7 +43,7 @@ export default class Map {
     const collection = new this.ymaps.GeoObjectCollection();
 
     this.data.forEach(({
-      location, problem, status, type, userComment,
+      location, problem, status, type,
     }) => {
       // replace brackets for json parse
       const re = /'/gi;

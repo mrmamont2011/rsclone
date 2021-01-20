@@ -1,8 +1,9 @@
 @import 'normalize.css';
+@import '../../node_modules/air-datepicker/src/sass/*.scss';
 
 @import './layout/bootstrap_minty.css';
 @import './abstract/*.scss';
 @import './layout/base.scss';
 @import './layout/media.scss';
 
-@import './blocks/*.scss';
+@import './components/*.scss';

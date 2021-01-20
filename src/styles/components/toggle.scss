@@ -1,6 +1,6 @@
 .toggle {
   width: 254px;
-  margin-bottom: 20px;
+  margin-top: 20px;
   position: relative;
   display: flex;
   align-items: center;
@@ -42,7 +42,7 @@
     background-color: var(--white);
     border-radius: 50%;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    margin-left: 3px;
+    margin-left: 2px;
     transition: margin 0.4s;
   }
 }
