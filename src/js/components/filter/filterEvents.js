@@ -1,4 +1,5 @@
 import Map from '../map/Map';
+import Table from '../table/Table';
 import getByFilter from './filterSelect';
 import { data } from '../../constants';
 import filterSearch from './filterSearch';
@@ -9,6 +10,7 @@ import filterSearch from './filterSearch';
 
 export default function filterEvents() {
   const map = new Map();
+  const table = new Table();
   const mapEl = document.querySelector('#map');
   const filter = document.querySelector('#filter');
   const styledSelect = document.querySelectorAll('#filter .select-styled');
@@ -85,6 +87,7 @@ export default function filterEvents() {
         const filteredData = getByFilter(rel, data);
         mapEl.innerHTML = '';
         map.updateData = filteredData.data || [];
+        table.updateTable(filteredData.data || []);
         const styledTxt = sel.children[1];
         styledTxt.textContent = target.textContent;
       }
@@ -102,5 +105,6 @@ export default function filterEvents() {
     const searchData = filterSearch(data, formValue);
     mapEl.innerHTML = '';
     map.updateData = searchData || [];
+    table.updateTable(searchData || []);
   });
 }

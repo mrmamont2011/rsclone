@@ -29,7 +29,9 @@ export default class Popup {
     this.closePopupBtn.addEventListener('click', (e) => {
       e.preventDefault();
 
-      this.popupVideo.pause();
+      if (this.popupVideo) {
+        this.popupVideo.pause();
+      }
       overlay.classList.remove('overlay--visible');
       this.popupDom.classList.remove('popup--visible');
       document.body.classList.remove('no-scroll');
