@@ -23,6 +23,7 @@ const toggle = new Toggle();
 
 (function main() {
   try {
+    toggle.init();
     map.init(data);
     table.init(data);
 

@@ -7,11 +7,10 @@ const popup = new Popup();
 export default class Table {
   constructor() {
     this.data = null;
+    this.tableDom = document.querySelector('#table');
   }
 
-  renderTable() {
-    const tableDom = document.querySelector('#table');
-
+  renderTableHeaders() {
     const tableHeaderRow = document.createElement('tr');
     tableHeaderRow.classList.add('table__header');
 
@@ -23,7 +22,11 @@ export default class Table {
       tableHeaderRow.append(tableHeader);
     });
 
-    tableDom.append(tableHeaderRow);
+    this.tableDom.append(tableHeaderRow);
+  }
+
+  renderTableBody() {
+    const tableBody = document.createElement('tbody');
 
     this.data.forEach(({
       chatId, date, type, problem, userComment, status, image, video, admin,
@@ -47,8 +50,10 @@ export default class Table {
         tableRow.append(cell);
       });
 
-      tableDom.append(tableRow);
+      tableBody.append(tableRow);
     });
+
+    this.tableDom.append(tableBody);
   }
 
   static createCell(type, value) {
@@ -119,6 +124,13 @@ export default class Table {
 
   init(data) {
     this.data = data;
-    this.renderTable();
+    this.renderTableHeaders();
+    this.renderTableBody();
+  }
+
+  updateTable(data) {
+    this.data = data;
+    this.tableDom.tBodies[0].remove();
+    this.renderTableBody();
   }
 }

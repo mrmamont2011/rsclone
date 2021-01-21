@@ -1,5 +1,4 @@
 export default class Connector {
-
   static async getData(url) {
     try {
       const data = await fetch(url);
