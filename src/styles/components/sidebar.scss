@@ -1,7 +1,7 @@
 .sidebar_show-button {
   position: absolute;
   top: 39px;
-  background: #F8F9FA;
+  background: $gray;
   z-index: 1;
   width: 22px;
   height: 22px;
@@ -12,12 +12,11 @@
 }
 
 #filter-date {
-  background-color: white;
+  background-color: var(--white);
 }
 
 .sidebar {
-
-  width: 320px;
+  width: $width;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -25,7 +24,7 @@
   padding-top: 30px;
   transition: 0.5s;
   position: fixed;
-  background-color: #F8F9FA;
+  background-color: $gray;
   left: 0;
   top: 0;
   z-index: 1;
@@ -43,7 +42,7 @@
     position: absolute;
     right: 30px;
     top: 39px;
-    background: #F8F9FA;
+    background: $gray;
     z-index: 1;
     width: 22px;
     height: 22px;
@@ -145,7 +144,7 @@
       align-items: baseline;
 
       .btn-apply-badge.active {
-        visibility:visible;
+        visibility: visible;
       }
 
       .btn-apply-badge {
