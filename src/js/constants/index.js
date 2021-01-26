@@ -3,7 +3,7 @@ export const data = [
     _id: '5fea0554b20baa05a841403a',
     type: 'незаконная свалка',
     problem: 'бытовой мусор',
-    date: 'Sat Jan 02 2020 19:48:55 GMT+0000 (Coordinated Universal Time)',
+    date: 'Sat Jan 02 2021 19:48:55 GMT+0000 (Coordinated Universal Time)',
     location: "{'latitude': '56.24309266089005', 'longitude': '43.96825220147877'}",
     image: ['./images/001.jpg'],
     userComment: 'сильно пахнет',
@@ -139,10 +139,27 @@ export const filters = {
     overContainer: 'переполенный',
     brokenContainer: 'сломанный',
     missedContainer: 'отсутствует',
-    abandonedCar: 'брошенный  авто',
+    abandonedCar: 'брошенный авто',
     firedCar: 'сгоревший авто',
     sawedTrees: 'спиленные',
     fallenTrees: 'поваленные',
+  },
+};
+
+export const problemOptions = {
+  value: {
+    [filters.type.garbage]: ['all', ...Object.values(filters.problem).slice(0, 3)],
+    [filters.type.container]: ['all', ...Object.values(filters.problem).slice(3, 6)],
+    [filters.type.auto]: ['all', ...Object.values(filters.problem).slice(6, 8)],
+    [filters.type.tree]: ['all', ...Object.values(filters.problem).slice(8, 10)],
+    all: ['all'],
+  },
+  text: {
+    [filters.type.garbage]: ['Все', 'Строительный мусор', 'Бытовой мусор', 'Коммерческий мусор'],
+    [filters.type.container]: ['Все', 'Переполненный контейнер', 'Сломанный контейнер', 'Отсутствует контейнер'],
+    [filters.type.auto]: ['Все', 'Брошенный авто', 'Сгоревший авто'],
+    [filters.type.tree]: ['Все', 'Спиленные деревья', 'Поваленные деревья'],
+    all: ['Все'],
   },
 };
 
