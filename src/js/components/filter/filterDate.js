@@ -20,6 +20,10 @@ import moment from 'moment';
  */
 
 export default function filterDate(date, filteredData = []) {
+  if (typeof date === 'undefined' || date === '') {
+    return filteredData;
+  }
+
   const splitedDate = date.split('-');
   const startDate = moment(splitedDate[0], 'DD.MM.YYYY', true).startOf('day').format();
   const endDate = moment(splitedDate[1], 'DD.MM.YYYY', true).startOf('day').format();

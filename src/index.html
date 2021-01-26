@@ -12,15 +12,17 @@
   <div class="app">
     <main class="wrapper">
 
+      <button class="sidebar_show-button" id='show-panel'><i class="active far fa-caret-square-right"></i></i></button>
+
       <aside class="sidebar" id="filter">
 
-        <button class="sidebar_hide-button" id='hide-panel'><i class="far fa-caret-square-left"></i></i></button>
+        <button class="sidebar_hide-button" id='hide-panel'><i class="active far fa-caret-square-left"></i></i></button>
 
         <h1 class="sidebar__title">
           <a href="#" class="logo">Антимусор</a>
         </h1>
 
-		    <div class="toggle" id="toggle">
+        <div class="toggle" id="toggle">
           <span class="toggle__text">Карта</span>
           <input type="checkbox" id="toggle-input" class="toggle__input">
           <label for="toggle-input" class="toggle__label"></label>
@@ -28,64 +30,72 @@
         </div>
 
         <div class="sidebar__find-wrap">
-          <div class="find__wrap">
-            <form class='find__form' id='findForm'>
-              <input id="find-input" type="text" placeholder="Поиск...">
-              <button type="submit"><i class="fas fa-search-location"></i></button>
-            </form>
-          </div>
+          <form class='find__form' id='findForm'>
+            <input class="form-control find__form-control" required id="find-input" type="text" placeholder="Поиск...">
+            <button class="btn btn-info find__form-button" type="submit"><i class="fas fa-search-location"></i></button>
+          </form>
         </div>
+
         <div class="sidebar__type-wrap">
-          <select>
-            <option value="hide">По типу проблемы</option>
-            <option value="all">По типу</option>
-            <option value="незаконная свалка">Незаконная свалка</option>
-            <option value="мусорный контейнер">Мусорный контейнер</option>
-            <option value="автотранспорт">Автотранспорт</option>
-            <option value="деревья">Деревья</option>
-          </select>
-        </div>
-        <div class="sidebar__problem-wrap">
-          <select>
-            <option value="hide">Проблема</option>
-            <option value="all">Проблема</option>
-            <option value="строительный мусор">Строительный мусор</option>
-            <option value="бытовой мусор">Бытовой мусор</option>
-            <option value="коммерческий мусор">Коммерческий мусор</option>
-            <option value="переполенный">Переполенный контейнер</option>
-            <option value="сломанный">Сломанный контейнер</option>
-            <option value="отсутствует">Отсутствует контейнер</option>
-            <option value="брошенный  авто">Брошенный авто</option>
-            <option value="сгоревший авто">Сгоревший авто</option>
-            <option value="спиленные">Спиленные деревья</option>
-            <option value="поваленные">Поваленные деревья</option>
-          </select>
-        </div>
-        <div class="sidebar__status-wrap">
-          <select>
-            <option value="hide">По статусу</option>
-            <option value="all">По статусу</option>
-            <option value="done">Сделано</option>
-            <option value="pending">В работе</option>
-            <option value="new">Получено</option>
-          </select>
-        </div>
-        <div class="sidebar__date-wrap">
-          <div class="date__wrap">
-            <input id="filter-date" type="text" readonly="readonly" placeholder="По дате">
+          <div class="form-group">
+            <label class="col-form-label" for="type-select">По типу</label>
+            <select class="custom-select" id="type-select">
+              <option value="all" selected>Все</option>
+              <option value="незаконная свалка">Незаконная свалка</option>
+              <option value="мусорный контейнер">Мусорный контейнер</option>
+              <option value="автотранспорт">Автотранспорт</option>
+              <option value="деревья">Деревья</option>
+            </select>
           </div>
+        </div>
+
+        <div class="sidebar__problem-wrap disabled">
+          <div class="form-group form__problem-wrap">
+            <label class="col-form-label" for="problem-select">Проблема</label>
+            <select class="custom-select" id="problem-select">
+              <option selected value="all">Все</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="sidebar__status-wrap">
+          <div class="form-group">
+            <label class="col-form-label" for="problem-select">По статусу</label>
+            <select class="custom-select" id="status-select">
+              <option selected value="all">Все</option>
+              <option value="done">Сделано</option>
+              <option value="pending">В работе</option>
+              <option value="new">Получено</option>
+
+
+            </select>
+          </div>
+        </div>
+
+        <div class="sidebar__date-wrap">
+          <div class="form-group">
+            <label class="col-form-label" for="problem-select">По дате</label>
+            <input class="form-control" id="filter-date" type="text" placeholder="Все" readonly="readonly">
+          </div>
+        </div>
+
+        <div class="sidebar__buttons-wrap">
+          <button type="button" data-action='apply' class="btn btn-info btn-apply">
+            Применить
+            <span id='search-count' class="badge badge-secondary badge-pill btn-apply-badge">0</span>
+          </button>
+          <button type="button" data-action='reset' class="btn btn-danger btn-reset">Сбросить</button>
         </div>
 
         <a class="btn btn-primary sidebar__link" href="tg://resolve?domain=NikName">
           <span class="sidebar__link-text">Сообщить о проблеме </span>
           <img class="sidebar__link-icon" src="./images/telegram.png" alt="telegram">
         </a>
-
       </aside>
 
       <div class="app__content" id="app-wrapper">
         <section class="map" id="map"></section>
-        
+
         <section class="table-wrapper" id="table-container">
           <table class="table table-hover" id="table"></table>
         </section>

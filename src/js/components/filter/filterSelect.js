@@ -7,7 +7,7 @@ import { filters, statusColors } from '../../constants';
  * @return object
  */
 
-export default function getByFilter(rel, filteredData = []) {
+export default function getByFilter(rel = 'all', filteredData = []) {
   switch (rel) {
     case filters.status.done:
       return {

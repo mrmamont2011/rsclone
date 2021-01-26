@@ -2,7 +2,6 @@ import './styles/main.scss';
 import Map from './js/components/map/Map';
 import Table from './js/components/table/Table';
 import { data } from './js/constants';
-import renderSelectInit from './js/components/filter/selectRender';
 import dateRender from './js/components/filter/dateRender';
 import filterEvents from './js/components/filter/filterEvents';
 import Toggle from './js/components/toggle/Toggle';
@@ -26,12 +25,7 @@ const toggle = new Toggle();
     toggle.init();
     map.init(data);
     table.init(data);
-
-    const renderSelect = renderSelectInit();
-    renderSelect('.sidebar__status-wrap');
-    renderSelect('.sidebar__type-wrap');
-    renderSelect('.sidebar__problem-wrap');
-    dateRender(data);
+    dateRender();
     filterEvents();
   } catch (err) {
     // eslint-disable-next-line no-alert
