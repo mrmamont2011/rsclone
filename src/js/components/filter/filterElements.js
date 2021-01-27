@@ -1,0 +1,16 @@
+export default {
+  mapEl: document.querySelector('#map'),
+  filterEl: document.querySelector('#filter'),
+  hidePanelBtn: document.querySelector('#hide-panel'),
+  showPanelBtn: document.querySelector('#show-panel'),
+  tableWrap: document.querySelector('.table-wrapper'),
+  findForm: document.querySelector('#findForm'),
+  findInput: document.querySelector('#find-input'),
+  typeSelect: document.querySelector('#type-select'),
+  searchCount: document.querySelector('#search-count'),
+  statusSelect: document.querySelector('#status-select'),
+  problemWrap: document.querySelector('.sidebar__problem-wrap'),
+  buttonsWrap: document.querySelector('.sidebar__buttons-wrap'),
+  dateInput: document.querySelector('#filter-date'),
+  appContent: document.querySelector('.app__content'),
+};

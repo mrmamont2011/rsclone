@@ -1,9 +1,13 @@
 import { problemOptions } from '../../constants';
 
-export default function problemRerender(val) {
-  const problemWrap = document.querySelector('.form__problem-wrap');
-  const problemSelect = document.querySelector('#problem-select');
+/**
+ * Create new select for problem filter
+ * @param rel
+ * @param filteredData
+ * @return object
+ */
 
+export default function problemRerender(val) {
   function createSelect() {
     const select = document.createElement('select');
     select.classList.add('custom-select');
@@ -30,5 +34,6 @@ export default function problemRerender(val) {
     return select;
   }
 
-  problemWrap.replaceChild(createSelectWithOptions(), problemSelect);
+  document.querySelector('.form__problem-wrap')
+    .replaceChild(createSelectWithOptions(), document.querySelector('#problem-select'));
 }

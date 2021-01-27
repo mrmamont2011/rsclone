@@ -1,19 +1,7 @@
 import moment from 'moment';
 
 /**
- *
- * Some usefull piece for debug maybee will need
- * console.dir({
- *    startDate,
- *    momentDate,
- *    endDate,
- *    firstLogic: `${(momentDate >= startDate)} - ${momentDate} >= ${startDate}`,
- *    secondLogic: `${(momentDate <= endDate)} - ${momentDate} <= ${endDate}`,
- *    logicAll: (momentDate >= startDate && momentDate <= endDate),
- *    statement: 'momentDate >= startDate && momentDate <= endDate',
- * });
- *
- * return filtered data object by start and end date without time
+ * Return filtered data object by start and end date without time
  * @param date
  * @param filteredData
  * @return object

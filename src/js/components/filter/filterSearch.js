@@ -1,11 +1,13 @@
-export default function filterSearch(data = [], text = 'placeholder') {
-  const findElements = [];
+/**
+ * Search in object converted to string
+ * @param data
+ * @param text
+ * @return array
+ */
 
-  data.forEach((obj, i) => {
-    const searchEl = JSON.stringify(obj);
-    if (searchEl.indexOf(text) > -1) {
-      findElements.push(data[i]);
-    }
-  });
-  return findElements;
+export default function filterSearch(data = [], text = 'placeholder') {
+  return data.reduce((prev, cur) => {
+    if (JSON.stringify(cur).indexOf(text) > -1) { prev.push(cur); }
+    return prev;
+  }, []);
 }

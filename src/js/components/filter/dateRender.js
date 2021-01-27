@@ -1,11 +1,9 @@
 /**
- * render datepicker
- * @param filteredData
+ * Jquery call for datepicker
  * @return void
  */
 
 export default function dateRender() {
-  // Jquery call for datepicker
   // eslint-disable-next-line no-undef
   $('#filter-date').datepicker({
     clearButton: true,

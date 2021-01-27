@@ -4,8 +4,12 @@
   transition: left 1s;
   position: relative;
   left: 0;
+  background:  var(--white);
 }
 
 .app__content.moved {
+  left: calc(-100% + 320px);
+}
+.app__content.hide-panel {
   left: -100%;
 }
