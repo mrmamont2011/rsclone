@@ -27,8 +27,6 @@ const toggle = new Toggle();
     table.init(data);
     dateRender();
     filterEvents();
-
-    // margin-left: 320px;
   } catch (err) {
     // eslint-disable-next-line no-alert
     alert(err);

@@ -1,7 +1,7 @@
 import { filters, statusColors } from '../../constants';
 
 /**
- * return filtered object by status and type
+ * Return filtered object by status and type
  * @param rel
  * @param filteredData
  * @return object
