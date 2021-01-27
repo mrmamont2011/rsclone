@@ -5,7 +5,7 @@ export const data = [
     problem: 'бытовой мусор',
     date: 'Sat Jan 02 2020 19:48:55 GMT+0000 (Coordinated Universal Time)',
     location: "{'latitude': '56.24309266089005', 'longitude': '43.96825220147877'}",
-    image: ['./images/001.jpg'],
+    image: ['https://api.telegram.org/file/bot1471431547:AAFFow0BhaEknDhpm_dZlZjJ06sGq-IPgRc/photos/file_20.jpg'],
     userComment: 'сильно пахнет',
     video: ['./video/1.mp4'],
     chatId: '122013352',
@@ -147,3 +147,6 @@ export const filters = {
 };
 
 export const tableHeaders = ['№', 'Дата и время', 'Тип проблемы', 'Проблема', 'Комментарий', 'Фото', 'Видео', 'Статус', 'Админ'];
+export const TELEGRAM_TOKEN = '1471431547:AAFFow0BhaEknDhpm_dZlZjJ06sGq-IPgRc';
+export const YANDEX_TOKEN = 'd79b2dc6-c925-42e8-a5be-459618c5977a';
+export const URL_BACKEND = 'https://immense-savannah-48052.herokuapp.com/api/reports/';

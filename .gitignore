@@ -4,3 +4,4 @@
 
 # ignore webstorm`s files
 .idea
+.env
