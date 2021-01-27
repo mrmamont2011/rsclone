@@ -4,6 +4,7 @@ import Table from './js/components/table/Table';
 import { data } from './js/constants';
 import dateRender from './js/components/filter/dateRender';
 import filterEvents from './js/components/filter/filterEvents';
+import preloaderEvents from './js/components/preloader/preloaderEvent';
 import Toggle from './js/components/toggle/Toggle';
 
 // font awesome
@@ -27,6 +28,7 @@ const toggle = new Toggle();
     table.init(data);
     dateRender();
     filterEvents();
+    preloaderEvents();
   } catch (err) {
     // eslint-disable-next-line no-alert
     alert(err);
