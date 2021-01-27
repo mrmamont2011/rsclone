@@ -4,10 +4,11 @@ import filterSearch from './filterSearch';
 import problemRerender from './problemRerender';
 import filterApply from './filterApply';
 import filterDate from './filterDate';
+import elements from './filterElements';
 import Table from '../table/Table';
 
 /**
- * filter events
+ * Events handlers for filter
  * @return void
  */
 
@@ -15,30 +16,28 @@ export default function filterEvents() {
   const map = new Map();
   const table = new Table();
 
-  const mapEl = document.querySelector('#map');
-  const filter = document.querySelector('#filter');
-  const hidePanel = document.querySelector('#hide-panel');
-  const showPanel = document.querySelector('#show-panel');
-  const tableWrap = document.querySelector('.table-wrapper');
-  const findForm = document.querySelector('#findForm');
-  const findInput = document.querySelector('#find-input');
-  const typeSelect = document.querySelector('#type-select');
+  const {
+    tableWrap, hidePanelBtn, showPanelBtn, filterEl, mapEl,
+    findForm, findInput, typeSelect,
+    searchCount, statusSelect,
+    problemWrap, buttonsWrap, dateInput, appContent,
+  } = elements;
 
-  const searchCount = document.querySelector('#search-count');
-
-  const statusSelect = document.querySelector('#status-select');
-  const problemWrap = document.querySelector('.sidebar__problem-wrap');
-  const buttonsWrap = document.querySelector('.sidebar__buttons-wrap');
-  const dateInput = document.querySelector('#filter-date');
-
-  hidePanel.addEventListener('click', () => {
+  hidePanelBtn.addEventListener('click', () => {
+    if (appContent.classList.contains('moved')) {
+      appContent.classList.add('hide-panel');
+    }
     tableWrap.classList.toggle('expanded');
-    filter.classList.toggle('hided');
+    filterEl.classList.toggle('hided');
   });
 
-  showPanel.addEventListener('click', () => {
+  showPanelBtn.addEventListener('click', () => {
+    if (appContent.classList.contains('moved')) {
+      appContent.classList.remove('hide-panel');
+    }
+
     tableWrap.classList.remove('expanded');
-    filter.classList.remove('hided');
+    filterEl.classList.remove('hided');
   });
 
   findForm.addEventListener('submit', (e) => {
