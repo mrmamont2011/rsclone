@@ -16,7 +16,6 @@ export default class Connector {
     try {
       const data = await fetch(`https://api.telegram.org/bot${TELEGRAM_TOKEN}/getFile?file_id=${id}`);
       const { result } = await data.json();
-      // console.log('1111111', data, id, result);
       return result.file_path;
     } catch (err) {
       console.error(err);

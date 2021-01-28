@@ -24,13 +24,11 @@ const toggle = new Toggle();
 
 (async function main() {
   try {
-    // eslint-disable-next-line no-alert
     const data = await Connector.getData(URL_BACKEND);
-
     // eslint-disable-next-line no-restricted-syntax
     for (const el of data) {
-      const url_img = await Connector.getPath(el.photo[0].id);
-      el.image = [`https://api.telegram.org/file/bot${TELEGRAM_TOKEN}/${url_img}`];
+      const urlImg = await Connector.getPath(el.photo[0].id);
+      el.image = [`https://api.telegram.org/file/bot${TELEGRAM_TOKEN}/${urlImg}`];
     }
 
     toggle.init();

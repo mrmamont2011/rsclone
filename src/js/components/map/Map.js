@@ -1,10 +1,6 @@
 import ymaps from 'ymaps';
 import { YANDEX_TOKEN } from '../../constants';
-/* eslint import/no-cycle: [0] */
-// import dotenv from 'dotenv';
 import getByLevel from '../filter/filterSelect';
-
-// dotenv.config();
 
 export default class Map {
   constructor() {
@@ -29,7 +25,7 @@ export default class Map {
       center: [56.3228, 43.9980],
       zoom: 11,
       autoFitToViewport: 'always',
-      controls: ['zoomControl', 'fullscreenControl'],
+      controls: ['fullscreenControl'],
     });
 
     const searchControl = new this.ymaps.control.SearchControl({
@@ -74,10 +70,7 @@ export default class Map {
   }
 
   async initMap() {
-    // console.log('111111111', process.env.YANDEX_TOKEN);
     this.ymaps = await ymaps.load(`https://api-maps.yandex.ru/2.1/?apikey=${YANDEX_TOKEN}&lang=ru_RU`);
-
-    // this.ymaps = await ymaps.load('https://api-maps.yandex.ru/2.1/?apikey=d79b2dc6-c925-42e8-a5be-459618c5977a&lang=ru_RU');
     await this.initYandexMap();
   }
 }
