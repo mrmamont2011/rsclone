@@ -4,7 +4,6 @@ import Table from './js/components/table/Table';
 import { TELEGRAM_TOKEN } from './js/constants';
 import dateRender from './js/components/filter/dateRender';
 import filterEvents from './js/components/filter/filterEvents';
-import preloaderEvents from './js/components/preloader/preloaderEvent';
 import Toggle from './js/components/toggle/Toggle';
 import Connector from './js/components/connector/Connector';
 
@@ -24,7 +23,6 @@ const toggle = new Toggle();
 
 (function main() {
   try {
-    // eslint-disable-next-line no-restricted-syntax
     // for (const el of data) {
     //   const urlImg = await Connector.getPath(el.photo[0].id);
     //   el.image = [`https://api.telegram.org/file/bot${TELEGRAM_TOKEN}/${urlImg}`];
@@ -33,12 +31,12 @@ const toggle = new Toggle();
     (async () => Connector.getData())().then((res) => {
       map.init(res);
       table.init(res);
+      document.querySelector('#preloader').classList.add('hide');
     });
 
     toggle.init();
     dateRender();
     filterEvents();
-    preloaderEvents();
   } catch (err) {
     // eslint-disable-next-line no-alert
     alert(err);

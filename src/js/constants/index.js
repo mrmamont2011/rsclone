@@ -53,8 +53,4 @@ export const problemOptions = {
   },
 };
 
-export const preloaderTimeOut = {
-  time: 1000,
-};
-
 export const tableHeaders = ['№', 'Дата и время', 'Тип проблемы', 'Проблема', 'Комментарий', 'Фото', 'Видео', 'Статус', 'Админ'];
