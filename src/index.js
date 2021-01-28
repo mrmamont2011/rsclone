@@ -1,8 +1,7 @@
 import './styles/main.scss';
 import Map from './js/components/map/Map';
 import Table from './js/components/table/Table';
-import { URL_BACKEND, TELEGRAM_TOKEN } from './js/constants';
-import renderSelectInit from './js/components/filter/selectRender';
+import { TELEGRAM_TOKEN } from './js/constants';
 import dateRender from './js/components/filter/dateRender';
 import filterEvents from './js/components/filter/filterEvents';
 import preloaderEvents from './js/components/preloader/preloaderEvent';
@@ -23,18 +22,20 @@ const map = new Map();
 const table = new Table();
 const toggle = new Toggle();
 
-(async function main() {
+(function main() {
   try {
-    const data = await Connector.getData(URL_BACKEND);
     // eslint-disable-next-line no-restricted-syntax
-    for (const el of data) {
-      const urlImg = await Connector.getPath(el.photo[0].id);
-      el.image = [`https://api.telegram.org/file/bot${TELEGRAM_TOKEN}/${urlImg}`];
-    }
+    // for (const el of data) {
+    //   const urlImg = await Connector.getPath(el.photo[0].id);
+    //   el.image = [`https://api.telegram.org/file/bot${TELEGRAM_TOKEN}/${urlImg}`];
+    // }
+
+    (async () => Connector.getData())().then((res) => {
+      map.init(res);
+      table.init(res);
+    });
 
     toggle.init();
-    map.init(data);
-    table.init(data);
     dateRender();
     filterEvents();
     preloaderEvents();

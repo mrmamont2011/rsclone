@@ -1,7 +1,7 @@
-import { TELEGRAM_TOKEN } from '../../constants';
+import { URL_BACKEND, TELEGRAM_TOKEN } from '../../constants';
 
 export default class Connector {
-  static async getData(url) {
+  static async getData(url = URL_BACKEND) {
     try {
       const data = await fetch(url);
       const result = await data.json();

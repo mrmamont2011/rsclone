@@ -80,6 +80,11 @@ export default function getByFilter(rel = 'all', filteredData = []) {
         data: filteredData.filter((el) => el.problem === filters.problem.firedCar),
       };
 
+    case filters.problem.badTuning:
+      return {
+        data: filteredData.filter((el) => el.problem === filters.problem.badTuning),
+      };
+
     case filters.problem.sawedTrees:
       return {
         data: filteredData.filter((el) => el.problem === filters.problem.sawedTrees),
