@@ -1,6 +1,8 @@
 import ymaps from 'ymaps';
-import { YANDEX_TOKEN } from '../../constants';
+import { YANDEX_TOKEN, TELEGRAM_TOKEN } from '../../constants';
 import getByLevel from '../filter/filterSelect';
+import Connector from '../connector/Connector';
+import moment from 'moment';
 
 export default class Map {
   constructor() {
@@ -43,16 +45,11 @@ export default class Map {
     const collection = new this.ymaps.GeoObjectCollection();
 
     this.data.forEach(({
-      location, problem, status, type, image,
+      date, location, problem, status, type, photo,
     }) => {
-      collection.add(new this.ymaps.Placemark([location.latitude, location.longitude], {
+      const placemark = new this.ymaps.Placemark([location.latitude, location.longitude], {
         balloonContent: `
-        <div class='balloon'>
-        <div>${type}</div>
-        <div>${problem}</div>
-          <div><img src="${image}" alt=""></div>
-        </div>
-        
+        <div></div>
         `,
         hintContent: `
         <div class='hint'>
@@ -63,7 +60,16 @@ export default class Map {
       },
       {
         iconColor: getByLevel(status).color,
-      }));
+      });
+
+      placemark.events.add('balloonopen', () => {
+        (async () => Connector.getPath(photo[0].id))().then((res) => {
+          const imageGet = `https://api.telegram.org/file/bot${TELEGRAM_TOKEN}/${res}`;
+          placemark.properties.set('balloonContent', `<div class="balloon"><div>${moment(date).format('DD.MM.YYYY')}</div><div>${type}</div><div>${problem}</div><div><img src="${imageGet}" alt="${problem}"></div></div>`);
+        });
+      });
+
+      collection.add(placemark);
     });
 
     this.contextMap.geoObjects.add(collection);

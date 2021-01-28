@@ -109,11 +109,4 @@ export default function filterEvents() {
       }
     });
   });
-
-  document.addEventListener('click', (e) => {
-    const { target } = e;
-    if (target.id !== 'find-input') {
-      document.querySelector('.fa-search-location').style.color = 'white';
-    }
-  });
 }

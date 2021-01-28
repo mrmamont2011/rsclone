@@ -1,7 +1,6 @@
 import './styles/main.scss';
 import Map from './js/components/map/Map';
 import Table from './js/components/table/Table';
-import { TELEGRAM_TOKEN } from './js/constants';
 import dateRender from './js/components/filter/dateRender';
 import filterEvents from './js/components/filter/filterEvents';
 import Toggle from './js/components/toggle/Toggle';
@@ -23,11 +22,6 @@ const toggle = new Toggle();
 
 (function main() {
   try {
-    // for (const el of data) {
-    //   const urlImg = await Connector.getPath(el.photo[0].id);
-    //   el.image = [`https://api.telegram.org/file/bot${TELEGRAM_TOKEN}/${urlImg}`];
-    // }
-
     (async () => Connector.getData())().then((res) => {
       map.init(res);
       table.init(res);
