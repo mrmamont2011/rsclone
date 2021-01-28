@@ -1,5 +1,5 @@
 import getByFilter from './filterSelect';
-import { data } from '../../constants';
+import Connector from '../connector/Connector';
 
 /**
  * Applies filter for select's
@@ -8,6 +8,8 @@ import { data } from '../../constants';
  */
 
 export default function filterApply(arr = []) {
-  const initialData = getByFilter('all', data);
-  return arr.reduce((prev, cur) => getByFilter(cur, prev.data), initialData);
+  return (async () => Connector.getData())().then((res) => {
+    const initialData = getByFilter('all', res);
+    return arr.reduce((prev, cur) => getByFilter(cur, prev.data), initialData);
+  });
 }

@@ -1,11 +1,11 @@
 import Map from '../map/Map';
-import { data } from '../../constants';
 import filterSearch from './filterSearch';
 import problemRerender from './problemRerender';
 import filterApply from './filterApply';
 import filterDate from './filterDate';
 import elements from './filterElements';
 import Table from '../table/Table';
+import Connector from '../connector/Connector';
 
 /**
  * Events handlers for filter
@@ -44,9 +44,13 @@ export default function filterEvents() {
     e.preventDefault();
     const formValue = findInput.value.toString();
     if (formValue.length > 0) {
-      const searchData = filterSearch(data, formValue);
-      mapEl.innerHTML = '';
-      map.updateData = searchData || [];
+      (async () => Connector.getData())().then((res) => {
+        const searchData = filterSearch(res, formValue);
+        mapEl.innerHTML = '';
+        map.updateData = searchData || [];
+        searchCount.innerText = (searchData || []).length;
+        searchCount.classList.add('active');
+      });
     }
   });
 
@@ -68,42 +72,41 @@ export default function filterEvents() {
     const selectValues = [typeSelect.value, problemSelect.value, statusSelect.value];
     const filteredData = filterApply(selectValues);
 
-    if (filteredData.data.length > 0) {
-      filteredData.data = filterDate(dateInput.value, filteredData.data);
-    }
+    filteredData.then((res) => {
+      if (res.data.length > 0) {
+        res.data = filterDate(dateInput.value, res.data);
+      }
 
-    switch (target.dataset.action) {
-      case 'apply':
-        mapEl.innerHTML = '';
-        searchCount.innerText = (filteredData.data || []).length;
-        searchCount.classList.add('active');
-        map.updateData = filteredData.data || [];
-        table.updateTable(filteredData.data || []);
-        break;
+      switch (target.dataset.action) {
+        case 'apply':
+          searchCount.innerText = (res.data || []).length;
+          searchCount.classList.add('active');
+          mapEl.innerHTML = '';
+          map.updateData = res.data || [];
+          table.updateTable(res.data || []);
+          break;
 
-      case 'reset':
-        for (let i = 0, l = options.length; i < l; i++) {
-          options[i].selected = options[i].defaultSelected;
-        }
-        problemRerender('all');
-        problemWrap.classList.add('disabled');
-        document.querySelector('.datepicker--button').click();
-        mapEl.innerHTML = '';
-        map.updateData = data;
-        table.updateTable(data);
-        findInput.value = '';
-        searchCount.classList.remove('active');
-        break;
+        case 'reset':
+          for (let i = 0, l = options.length; i < l; i++) {
+            options[i].selected = options[i].defaultSelected;
+          }
+          problemRerender('all');
+          problemWrap.classList.add('disabled');
+          document.querySelector('.datepicker--button').click();
+          findInput.value = '';
+          searchCount.classList.remove('active');
 
-      default:
-        break;
-    }
-  });
+          (async () => Connector.getData())().then((reset) => {
+            mapEl.innerHTML = '';
+            map.updateData = reset;
+            table.updateTable(reset);
+          });
 
-  document.addEventListener('click', (e) => {
-    const { target } = e;
-    if (target.id !== 'find-input') {
-      document.querySelector('.fa-search-location').style.color = 'white';
-    }
+          break;
+
+        default:
+          break;
+      }
+    });
   });
 }
