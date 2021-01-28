@@ -1,11 +1,13 @@
 import './styles/main.scss';
 import Map from './js/components/map/Map';
 import Table from './js/components/table/Table';
-import { data } from './js/constants';
+import { URL_BACKEND, TELEGRAM_TOKEN } from './js/constants';
+import renderSelectInit from './js/components/filter/selectRender';
 import dateRender from './js/components/filter/dateRender';
 import filterEvents from './js/components/filter/filterEvents';
 import preloaderEvents from './js/components/preloader/preloaderEvent';
 import Toggle from './js/components/toggle/Toggle';
+import Connector from './js/components/connector/Connector';
 
 // font awesome
 import '@fortawesome/fontawesome-free/js/fontawesome';
@@ -21,8 +23,15 @@ const map = new Map();
 const table = new Table();
 const toggle = new Toggle();
 
-(function main() {
+(async function main() {
   try {
+    const data = await Connector.getData(URL_BACKEND);
+    // eslint-disable-next-line no-restricted-syntax
+    for (const el of data) {
+      const urlImg = await Connector.getPath(el.photo[0].id);
+      el.image = [`https://api.telegram.org/file/bot${TELEGRAM_TOKEN}/${urlImg}`];
+    }
+
     toggle.init();
     map.init(data);
     table.init(data);
