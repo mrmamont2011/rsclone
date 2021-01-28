@@ -34,12 +34,7 @@ const toggle = new Toggle();
     toggle.init();
     map.init(data);
     table.init(data);
-
-    const renderSelect = renderSelectInit();
-    renderSelect('.sidebar__status-wrap');
-    renderSelect('.sidebar__type-wrap');
-    renderSelect('.sidebar__problem-wrap');
-    dateRender(data);
+    dateRender();
     filterEvents();
   } catch (err) {
     // eslint-disable-next-line no-alert

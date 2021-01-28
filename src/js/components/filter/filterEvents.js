@@ -1,109 +1,109 @@
 import Map from '../map/Map';
-import Table from '../table/Table';
-import getByFilter from './filterSelect';
 import { data } from '../../constants';
 import filterSearch from './filterSearch';
+import problemRerender from './problemRerender';
+import filterApply from './filterApply';
+import filterDate from './filterDate';
+import elements from './filterElements';
+import Table from '../table/Table';
+
 /**
- * filter events
+ * Events handlers for filter
  * @return void
  */
 
 export default function filterEvents() {
   const map = new Map();
   const table = new Table();
-  const mapEl = document.querySelector('#map');
-  const filter = document.querySelector('#filter');
-  const styledSelect = document.querySelectorAll('#filter .select-styled');
-  const dateEl = document.querySelector('#filter-date');
-  const select = document.querySelectorAll('#filter .select');
-  const hide = document.querySelector('#hide-panel');
-  const tableWrap = document.querySelector('.table-wrapper');
-  const findForm = document.querySelector('#findForm');
-  const findInput = document.querySelector('#find-input');
 
-  styledSelect.forEach((styled) => {
-    styled.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const { target } = e;
-      const active = document.querySelector('.select-styled.active');
-      if (active) { active.classList.remove('active'); }
-      target.classList.add('active');
+  const {
+    tableWrap, hidePanelBtn, showPanelBtn, filterEl, mapEl,
+    findForm, findInput, typeSelect,
+    searchCount, statusSelect,
+    problemWrap, buttonsWrap, dateInput, appContent,
+  } = elements;
 
-      const ulOptions = document.querySelectorAll('#filter .select-options');
-
-      ulOptions.forEach((option) => {
-        const style = option;
-        if (option.getAttribute('data-toogle-id') === styled.getAttribute('data-toogle-id')) {
-          style.classList.add('active');
-        } else {
-          style.classList.remove('active');
-        }
-      });
-    }, false);
-  });
-
-  const resetWrapClasses = () => {
-    document.querySelectorAll('#filter div').forEach((el) => {
-      el.classList.remove('active-wrap');
-    });
-  };
-
-  styledSelect.forEach((styled) => {
-    styled.addEventListener('click', (e) => {
-      resetWrapClasses();
-      const { target } = e;
-      const wrapTarget = target.parentElement.parentElement;
-      wrapTarget.classList.add('active-wrap');
-    });
-  });
-
-  document.addEventListener('click', (e) => {
-    const { target } = e;
-    if (!target.classList.contains('active')) {
-      styledSelect.forEach((styled) => {
-        styled.classList.remove('active');
-        const options = styled.nextSibling;
-        options.classList.remove('active');
-      });
+  hidePanelBtn.addEventListener('click', () => {
+    if (appContent.classList.contains('moved')) {
+      appContent.classList.add('hide-panel');
     }
-  });
-
-  dateEl.addEventListener('click', (e) => {
-    const { target } = e;
-    const wrapTarget = target.parentElement.parentElement;
-    const dateWrapTarget = target.parentElement;
-    resetWrapClasses();
-    if (!wrapTarget.classList.contains('active-wrap')) {
-      wrapTarget.classList.add('active-wrap');
-      dateWrapTarget.classList.add('active');
-    }
-  });
-
-  select.forEach((sel) => {
-    sel.addEventListener('click', (e) => {
-      const { target } = e;
-      if (target && target.matches('li')) {
-        const rel = target.getAttribute('rel');
-        const filteredData = getByFilter(rel, data);
-        mapEl.innerHTML = '';
-        map.updateData = filteredData.data || [];
-        const styledTxt = sel.children[1];
-        styledTxt.textContent = target.textContent;
-      }
-    }, false);
-  });
-
-  hide.addEventListener('click', () => {
     tableWrap.classList.toggle('expanded');
-    filter.classList.toggle('hided');
+    filterEl.classList.toggle('hided');
+  });
+
+  showPanelBtn.addEventListener('click', () => {
+    if (appContent.classList.contains('moved')) {
+      appContent.classList.remove('hide-panel');
+    }
+
+    tableWrap.classList.remove('expanded');
+    filterEl.classList.remove('hided');
   });
 
   findForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const formValue = findInput.value.toString();
-    const searchData = filterSearch(data, formValue);
-    mapEl.innerHTML = '';
-    map.updateData = searchData || [];
-    table.updateTable(searchData || []);
+    if (formValue.length > 0) {
+      const searchData = filterSearch(data, formValue);
+      mapEl.innerHTML = '';
+      map.updateData = searchData || [];
+    }
+  });
+
+  typeSelect.addEventListener('change', (e) => {
+    const { target } = e;
+    problemRerender(target.value);
+    if (target.value !== 'all') {
+      problemWrap.classList.remove('disabled');
+    } else {
+      problemWrap.classList.add('disabled');
+    }
+  });
+
+  buttonsWrap.addEventListener('click', (e) => {
+    const { target } = e;
+    const options = document.querySelectorAll('.custom-select option');
+    const problemSelect = document.querySelector('#problem-select');
+
+    const selectValues = [typeSelect.value, problemSelect.value, statusSelect.value];
+    const filteredData = filterApply(selectValues);
+
+    if (filteredData.data.length > 0) {
+      filteredData.data = filterDate(dateInput.value, filteredData.data);
+    }
+
+    switch (target.dataset.action) {
+      case 'apply':
+        mapEl.innerHTML = '';
+        searchCount.innerText = (filteredData.data || []).length;
+        searchCount.classList.add('active');
+        map.updateData = filteredData.data || [];
+        table.updateTable(filteredData.data || []);
+        break;
+
+      case 'reset':
+        for (let i = 0, l = options.length; i < l; i++) {
+          options[i].selected = options[i].defaultSelected;
+        }
+        problemRerender('all');
+        problemWrap.classList.add('disabled');
+        document.querySelector('.datepicker--button').click();
+        mapEl.innerHTML = '';
+        map.updateData = data;
+        table.updateTable(data);
+        findInput.value = '';
+        searchCount.classList.remove('active');
+        break;
+
+      default:
+        break;
+    }
+  });
+
+  document.addEventListener('click', (e) => {
+    const { target } = e;
+    if (target.id !== 'find-input') {
+      document.querySelector('.fa-search-location').style.color = 'white';
+    }
   });
 }

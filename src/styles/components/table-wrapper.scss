@@ -3,11 +3,11 @@
   padding-right: 1%;
   flex-shrink: 0;
   background-color: var(--white);
-  margin-left: 320px;
   transition: 0.5s;
+  height: calc(100vh - var(--footer-height));
+  overflow: auto;
 }
 
 .table-wrapper.expanded {
-  margin-left: 0;
   width: 100vw;
 }
