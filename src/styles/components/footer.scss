@@ -8,28 +8,30 @@
   left: 0;
   right: 0;
   bottom: 0;
+
+  &__links-wrap {
+    display: flex;
+    align-items: center;
+  }
+
+  &__team-list {
+    display: flex;
+  }
+
+  &__info {
+    margin-right: 10px;
+  }
+
+  &__course {
+    padding: 4px 6px;
+    border-radius: 4px;
+  }
 }
 
 .footer__cont {
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-.footer__copy-list {
-  width: 400px;
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.footer__copy-item {
-  margin-right: 50px;
-  margin-bottom: 4px;
-
-  &:nth-of-type(2n) {
-    margin-right: 0;
-    margin-left: auto;
-  }
 }
 
 .footer__author {
@@ -43,16 +45,18 @@
   transition: .3s;
 
   &:hover {
+    text-decoration: none;
     opacity: .7;
   }
 }
 
 .footer__link-img {
-  width: 25px;
-  height: 25px;
+
+  width: 16px;
+  height: 16px;
+  margin-right: 6px;
 
   &--rsschool {
-    width: 6vw;
-    margin-right: 18vw;
+    width: 74px;
   }
 }

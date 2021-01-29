@@ -1,11 +1,9 @@
-//colors
-$blue: #043A6B;
-$gray: #F8F9FA;
-
 // sidebar
-$width: 320px;
+:root {
+  --sidebar-width: 320px;
+}
 
 //footer
 :root {
-  --footer-height: 80px;
+  --footer-height: 50px;
 }

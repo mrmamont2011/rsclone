@@ -59,7 +59,10 @@ export default class Map {
         `,
       },
       {
-        iconColor: getByLevel(status).color,
+        iconImageSize: [38, 38],
+        iconImageOffset: [-5, -38],
+        iconLayout: 'default#imageWithContent',
+        iconImageHref: `images/${getByLevel(status).color}mark.svg`,
       });
 
       placemark.events.add('balloonopen', () => {
