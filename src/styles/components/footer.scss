@@ -2,8 +2,8 @@
   height: var(--footer-height);
   padding: 10px 0;
   background-color: var(--gray-dark);
-  color: $gray;
-  z-index: 99;
+  color: var(--light);
+  z-index: 6;
   position: fixed;
   left: 0;
   right: 0;
@@ -14,13 +14,17 @@
     align-items: center;
   }
 
+  &__team-list {
+    display: flex;
+  }
+
   &__info {
     margin-right: 10px;
   }
 
   &__course {
     padding: 4px 6px;
-    background: $rsYellow;
+    background: var(--rs-yellow);
     border-radius: 4px;
   }
 }

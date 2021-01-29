@@ -1,10 +1,12 @@
 //colors
-$blue: #043A6B;
-$gray: #F8F9FA;
-$rsYellow: #faea68;
+:root {
+  --rs-yellow: #faea68;
+}
 
 // sidebar
-$width: 320px;
+:root {
+  --sidebar-width: 320px;
+}
 
 //footer
 :root {
