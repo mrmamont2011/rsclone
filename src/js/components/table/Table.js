@@ -1,6 +1,8 @@
 import createDomElem from '../../helpers/domHelpers';
 import { tableHeaders } from '../../constants';
 import Popup from '../popup/Popup';
+import Connector from '../connector/Connector';
+import { TELEGRAM_TOKEN } from '../../constants';
 
 const popup = new Popup();
 
@@ -29,7 +31,7 @@ export default class Table {
     const tableBody = document.createElement('tbody');
 
     this.data.forEach(({
-      chatId, date, type, problem, userComment, status, image, video, admin,
+      chatId, date, type, problem, userComment, status, photo, video, admin,
     }) => {
       const tableRow = document.createElement('tr');
       tableRow.classList.add('table__row');
@@ -40,10 +42,9 @@ export default class Table {
         Table.createCell('type', type),
         Table.createCell('problem', problem),
         Table.createCell('userComment', userComment),
-        Table.createCell('images', image),
-        Table.createCell('video', video),
+        Table.createCell('images', photo),
         Table.createCell('status', status),
-        Table.createCell('admin', admin),
+        // Table.createCell('admin', admin),
       ];
 
       cellsInRow.forEach((cell) => {
@@ -60,15 +61,8 @@ export default class Table {
     const tableCell = document.createElement('td');
     tableCell.classList.add('table__row-cell');
 
-    function createIcon() {
-      const icon = document.createElement('div');
-      icon.classList.add('table__row-icon');
-      return icon;
-    }
-
     const problemDate = new Date(value);
     let imgThumb = null;
-    let videoIcon = null;
 
     switch (type) {
       case 'chatId':
@@ -76,7 +70,7 @@ export default class Table {
       case 'problem':
       case 'status':
       case 'comment':
-      case 'nameAdmin':
+      // case 'nameAdmin':
         tableCell.textContent = `${value}`;
         break;
 
@@ -85,19 +79,14 @@ export default class Table {
         break;
 
       case 'images':
-        imgThumb = createDomElem('img', 'table__row-thumb', value);
-        imgThumb.addEventListener('click', () => {
-          popup.openPopup(value, 'image');
+        (async () => Connector.getPath(value[0].id))().then((res) => {
+          const imageGet = `https://api.telegram.org/file/bot${TELEGRAM_TOKEN}/${res}`;
+          imgThumb = createDomElem('img', 'table__row-thumb', imageGet);
+          imgThumb.addEventListener('click', () => {
+            popup.openPopup(imageGet, 'image');
+          });
+          tableCell.append(imgThumb);
         });
-        tableCell.append(imgThumb);
-        break;
-
-      case 'video':
-        videoIcon = createIcon();
-        videoIcon.addEventListener('click', () => {
-          popup.openPopup(value, 'video');
-        });
-        tableCell.append(videoIcon);
         break;
 
       default:
@@ -123,6 +112,7 @@ export default class Table {
   }
 
   init(data) {
+    console.log(data);
     this.data = data;
     this.renderTableHeaders();
     this.renderTableBody();
