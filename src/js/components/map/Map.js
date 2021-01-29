@@ -1,8 +1,8 @@
 import ymaps from 'ymaps';
-import { YANDEX_TOKEN, TELEGRAM_TOKEN } from '../../constants';
+import moment from 'moment';
 import getByLevel from '../filter/filterSelect';
 import Connector from '../connector/Connector';
-import moment from 'moment';
+import { YANDEX_TOKEN, TELEGRAM_TOKEN } from '../../constants';
 
 export default class Map {
   constructor() {
