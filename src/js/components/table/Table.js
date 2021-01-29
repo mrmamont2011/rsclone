@@ -1,5 +1,5 @@
 import createDomElem from '../../helpers/domHelpers';
-import { tableHeaders, TELEGRAM_TOKEN } from '../../constants';
+import { filters, tableHeaders, TELEGRAM_TOKEN } from '../../constants';
 import Popup from '../popup/Popup';
 import Connector from '../connector/Connector';
 
@@ -71,11 +71,11 @@ export default class Table {
         break;
 
       case 'status':
-        if (value === 'new') {
+        if (value === filters.status.new) {
           tableCell.textContent = 'Получено';
-        } else if (value === 'pending') {
+        } else if (value === filters.status.inwork) {
           tableCell.textContent = 'В работе';
-        } else if (value === 'done') {
+        } else if (value === filters.status.done) {
           tableCell.textContent = 'Сделано';
         }
         break;
