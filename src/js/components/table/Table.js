@@ -1,8 +1,7 @@
 import createDomElem from '../../helpers/domHelpers';
-import { tableHeaders } from '../../constants';
+import { tableHeaders, TELEGRAM_TOKEN } from '../../constants';
 import Popup from '../popup/Popup';
 import Connector from '../connector/Connector';
-import { TELEGRAM_TOKEN } from '../../constants';
 
 const popup = new Popup();
 
@@ -31,7 +30,7 @@ export default class Table {
     const tableBody = document.createElement('tbody');
 
     this.data.forEach(({
-      chatId, date, type, problem, userComment, status, photo, video, admin,
+      chatId, date, type, problem, userComment, status, photo, admin,
     }) => {
       const tableRow = document.createElement('tr');
       tableRow.classList.add('table__row');
@@ -112,7 +111,6 @@ export default class Table {
   }
 
   init(data) {
-    console.log(data);
     this.data = data;
     this.renderTableHeaders();
     this.renderTableBody();
