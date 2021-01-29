@@ -30,7 +30,7 @@ export default class Table {
     const tableBody = document.createElement('tbody');
 
     this.data.forEach(({
-      chatId, date, type, problem, userComment, status, photo, admin,
+      chatId, date, type, problem, userComment, status, photo,
     }) => {
       const tableRow = document.createElement('tr');
       tableRow.classList.add('table__row');
@@ -43,7 +43,6 @@ export default class Table {
         Table.createCell('userComment', userComment),
         Table.createCell('images', photo),
         Table.createCell('status', status),
-        // Table.createCell('admin', admin),
       ];
 
       cellsInRow.forEach((cell) => {
@@ -67,10 +66,18 @@ export default class Table {
       case 'chatId':
       case 'type':
       case 'problem':
-      case 'status':
       case 'comment':
-      // case 'nameAdmin':
         tableCell.textContent = `${value}`;
+        break;
+
+      case 'status':
+        if (value === 'new') {
+          tableCell.textContent = 'Получено';
+        } else if (value === 'pending') {
+          tableCell.textContent = 'В работе';
+        } else if (value === 'done') {
+          tableCell.textContent = 'Сделано';
+        }
         break;
 
       case 'date':
